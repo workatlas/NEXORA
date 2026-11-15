@@ -1,0 +1,118 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#070b16">
+  <title>You're Offline | NEXORA</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background: #070b16;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+
+    .offline-card {
+      width: 100%;
+      max-width: 520px;
+      padding: 48px 30px;
+      background: #101a30;
+      border: 1px solid rgba(130, 101, 255, 0.25);
+      border-radius: 24px;
+      box-shadow: 0 20px 80px rgba(75, 55, 180, 0.15);
+    }
+
+    .logo {
+      font-size: 36px;
+      font-weight: 900;
+      letter-spacing: 3px;
+      background: linear-gradient(90deg, #9b7aff, #38c8ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 38px;
+    }
+
+    .icon {
+      width: 76px;
+      height: 76px;
+      margin: 0 auto 24px;
+      display: grid;
+      place-items: center;
+      border-radius: 22px;
+      background: rgba(130, 101, 255, 0.12);
+      font-size: 34px;
+    }
+
+    h1 {
+      font-size: 28px;
+      margin-bottom: 14px;
+    }
+
+    p {
+      color: #a8b3ca;
+      line-height: 1.7;
+      margin-bottom: 28px;
+    }
+
+    button {
+      border: 0;
+      border-radius: 12px;
+      padding: 14px 25px;
+      background: linear-gradient(100deg, #8265ff, #38c8ff);
+      color: white;
+      font-weight: 700;
+      font-size: 15px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      opacity: 0.9;
+    }
+
+    .footer {
+      margin-top: 30px;
+      color: #64748b;
+      font-size: 12px;
+    }
+  </style>
+</head>
+
+<body>
+  <main class="offline-card">
+    <div class="logo">NEXORA.</div>
+
+    <div class="icon">⌁</div>
+
+    <h1>You're Offline</h1>
+
+    <p>
+      Your connection seems to be unavailable.
+      Don't worry — NEXORA will be ready when
+      you're back online.
+    </p>
+
+    <button onclick="window.location.reload()">
+      Try Again →
+    </button>
+
+    <div class="footer">
+      DISCOVER THE FUTURE OF AI
+    </div>
+  </main>
+</body>
+</html>
