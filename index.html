@@ -6,10 +6,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Discover powerful AI tools, intelligent software and automation solutions with NEXORA.">
+
     <title>NEXORA — Discover the Future of AI</title>
+
     <link rel="stylesheet" href="css/style.css">
 
-    <!-- CATEGORY FILTER STYLES -->
     <style>
         .category-card {
             cursor: pointer;
@@ -23,6 +24,8 @@
         }
 
         .filter-toolbar {
+            position: relative;
+            z-index: 10;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -37,19 +40,34 @@
         }
 
         .filter-reset {
-            padding: 10px 18px;
+            position: relative;
+            z-index: 20;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 20px;
+            min-height: 44px;
             color: white;
-            background: rgba(130, 101, 255, 0.15);
-            border: 1px solid rgba(130, 101, 255, 0.4);
+            background: rgba(130, 101, 255, 0.18);
+            border: 1px solid rgba(130, 101, 255, 0.55);
             border-radius: 9px;
+            font-size: 13px;
+            font-weight: 700;
             cursor: pointer;
-            font-weight: 600;
+            pointer-events: auto;
             transition: 0.3s ease;
         }
 
         .filter-reset:hover {
-            background: rgba(130, 101, 255, 0.3);
+            background: rgba(130, 101, 255, 0.35);
             border-color: #8265ff;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(130, 101, 255, 0.2);
+        }
+
+        .filter-reset:focus-visible {
+            outline: 2px solid #a99aff;
+            outline-offset: 3px;
         }
 
         .tool-card[hidden] {
@@ -62,6 +80,7 @@
 
     <!-- NAVIGATION -->
     <header class="navbar">
+
         <a href="#" class="logo">NEXORA<span>.</span></a>
 
         <nav class="nav-links">
@@ -72,11 +91,12 @@
         </nav>
 
         <a href="#tools" class="nav-button">Explore Tools ↗</a>
+
     </header>
 
     <main>
 
-        <!-- HERO -->
+        <!-- HERO SECTION -->
         <section class="hero" id="home">
 
             <div class="hero-content">
@@ -110,7 +130,7 @@
                             placeholder="What do you want AI to help you with?"
                         >
 
-                        <button id="searchButton">
+                        <button type="button" id="searchButton">
                             Discover →
                         </button>
 
@@ -148,11 +168,17 @@
                 <div class="orb orb-two"></div>
 
                 <div class="visual-card">
+
                     <span class="visual-label">NEXORA SYSTEM</span>
+
                     <div class="visual-symbol">N</div>
+
                     <h3>Intelligence Unlocked</h3>
+
                     <p>Discover what's possible.</p>
+
                     <span class="visual-status">● SYSTEM ONLINE</span>
+
                 </div>
 
             </div>
@@ -163,9 +189,17 @@
         <section class="categories section" id="categories">
 
             <div class="section-heading">
+
                 <span class="eyebrow">EXPLORE THE ECOSYSTEM</span>
-                <h2>One universe. <span>Infinite possibilities.</span></h2>
-                <p>Choose a category to discover the right AI technology.</p>
+
+                <h2>
+                    One universe. <span>Infinite possibilities.</span>
+                </h2>
+
+                <p>
+                    Choose a category to discover the right AI technology.
+                </p>
+
             </div>
 
             <div class="category-grid">
@@ -214,22 +248,32 @@
         <section class="tools-section section" id="tools">
 
             <div class="section-heading">
+
                 <span class="eyebrow">THE AI COLLECTION</span>
-                <h2>Tools that move <span>you forward.</span></h2>
+
+                <h2>
+                    Tools that move <span>you forward.</span>
+                </h2>
+
                 <p>
                     Discover powerful AI platforms selected to help
                     you create, build, automate and achieve more.
                 </p>
+
             </div>
 
-            <!-- FILTER CONTROLS -->
+            <!-- FILTER TOOLBAR -->
             <div class="filter-toolbar">
 
                 <span class="filter-status" id="filterStatus">
-                    Showing all 16 AI tools
+                    Showing all 18 AI tools
                 </span>
 
-                <button class="filter-reset" id="showAllButton">
+                <button
+                    type="button"
+                    class="filter-reset"
+                    id="showAllButton"
+                >
                     Show All Tools ↗
                 </button>
 
@@ -533,6 +577,28 @@
 
                 </article>
 
+                <article class="tool-card"
+                    data-category="automation productivity"
+                    data-keywords="make automation workflow business integrations visual no code apps">
+
+                    <div class="tool-top">
+                        <span class="tool-icon">⚡</span>
+                        <span class="tool-tag">AUTOMATION</span>
+                    </div>
+
+                    <h3>Make</h3>
+
+                    <p>
+                        Visually connect apps and build automated
+                        workflows for business and daily tasks.
+                    </p>
+
+                    <a href="https://www.make.com/" target="_blank" rel="noopener noreferrer">
+                        Explore Tool ↗
+                    </a>
+
+                </article>
+
                 <!-- PRODUCTIVITY -->
 
                 <article class="tool-card"
@@ -596,6 +662,28 @@
                     </p>
 
                     <a href="https://gamma.app/" target="_blank" rel="noopener noreferrer">
+                        Explore Tool ↗
+                    </a>
+
+                </article>
+
+                <article class="tool-card"
+                    data-category="video productivity"
+                    data-keywords="descript video audio editing podcast transcription captions content creator editing">
+
+                    <div class="tool-top">
+                        <span class="tool-icon">▶</span>
+                        <span class="tool-tag">AI VIDEO</span>
+                    </div>
+
+                    <h3>Descript</h3>
+
+                    <p>
+                        Edit videos and podcasts using AI-powered
+                        transcription, audio and video editing tools.
+                    </p>
+
+                    <a href="https://www.descript.com/" target="_blank" rel="noopener noreferrer">
                         Explore Tool ↗
                     </a>
 
@@ -668,6 +756,8 @@
 
         let activeCategory = "all";
 
+        const totalTools = toolCards.length;
+
         function filterTools(shouldScroll = true) {
 
             const query = searchInput.value.trim().toLowerCase();
@@ -680,6 +770,7 @@
 
                 const content = card.textContent.toLowerCase();
                 const keywords = (card.dataset.keywords || "").toLowerCase();
+
                 const searchableText = content + " " + keywords;
 
                 const categories = (card.dataset.category || "").split(/\s+/);
@@ -718,14 +809,20 @@
 
             }
 
-            if (activeCategory === "all") {
+            if (activeCategory === "all" && query === "") {
 
                 filterStatus.textContent =
-                    "Showing " + matches + " AI tools";
+                    "Showing all " + totalTools + " AI tools";
+
+            } else if (activeCategory === "all") {
+
+                filterStatus.textContent =
+                    "Showing " + matches + " of " + totalTools + " AI tools";
 
             } else {
 
-                const categoryName = activeCategory.charAt(0).toUpperCase() +
+                const categoryName =
+                    activeCategory.charAt(0).toUpperCase() +
                     activeCategory.slice(1);
 
                 filterStatus.textContent =
@@ -743,7 +840,7 @@
 
         }
 
-        // CATEGORY CLICK
+        // CATEGORY FILTERS
         categoryCards.forEach(categoryCard => {
 
             categoryCard.addEventListener("click", function(event) {
@@ -778,8 +875,10 @@
 
         });
 
-        // SHOW ALL TOOLS
-        showAllButton.addEventListener("click", function() {
+        // SHOW ALL BUTTON
+        showAllButton.addEventListener("click", function(event) {
+
+            event.preventDefault();
 
             activeCategory = "all";
 
@@ -791,9 +890,15 @@
 
             filterTools(false);
 
+            showAllButton.textContent = "✓ All Tools Showing";
+
+            window.setTimeout(function() {
+                showAllButton.textContent = "Show All Tools ↗";
+            }, 1500);
+
         });
 
-        // INITIAL STATE
+        // INITIAL DIRECTORY STATE
         filterTools(false);
 
     });
