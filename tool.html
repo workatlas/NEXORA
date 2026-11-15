@@ -1,57 +1,1429 @@
-AI ASSISTANT
-Discover ChatGPT
-Think bigger. Create smarter. Get more done.
 
-ChatGPT is an AI assistant that helps you explore ideas, write content, analyze information, solve problems and work through everyday tasks.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#070b16">
+    <meta name="description" content="Explore powerful AI platforms with NEXORA. Discover capabilities, use cases and tools to move your ideas forward.">
 
-Visit Official Website ↗
-Explore More Tools
-✳
-EXPLORE THE CAPABILITIES
-What makes ChatGPT powerful?
-✍️
-Writing & Creation
-Draft articles, messages, stories and other content.
+    <title>Discover AI Tools — NEXORA</title>
 
-🧠
-Research & Reasoning
-Explore questions, understand concepts and analyze information.
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" href="assets/icons/icon-192.png" type="image/png">
 
-⚡
-Everyday Productivity
-Get help planning, organizing and completing tasks.
+    <style>
+        :root {
+            --detail-bg: #070b16;
+            --detail-panel: #101a2e;
+            --detail-purple: #8265ff;
+            --detail-blue: #38c8ff;
+            --detail-muted: #9ba9c1;
+            --detail-border: rgba(255,255,255,.09);
+        }
 
-BUILT FOR POSSIBILITIES
-What can you use it for?
-🚀
-Content creation
-Explore how ChatGPT can support this type of work and help move your ideas forward.
+        * { box-sizing: border-box; }
 
-💡
-Learning and research
-Explore how ChatGPT can support this type of work and help move your ideas forward.
+        html { scroll-behavior: smooth; }
 
-🎯
-Business productivity
-Explore how ChatGPT can support this type of work and help move your ideas forward.
+        body {
+            margin: 0;
+            background: var(--detail-bg);
+            color: #fff;
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
 
-KEEP EXPLORING
-Discover Related AI Tools
-Explore more powerful tools in the ai assistant category. Find the right platform for your next idea.
+        a { color: inherit; text-decoration: none; }
 
-✦
-↗
-AI ASSISTANT
-Claude
-A thoughtful partner for complex work.
+        button { font: inherit; }
 
-✧
-↗
-AI ASSISTANT
-Gemini
-Explore ideas across text, images and more.
+        .detail-page { min-height: 100vh; }
 
-Ready to explore ChatGPT?
-Visit the official platform to discover its latest features and plans.
+        .detail-nav {
+            min-height: 78px;
+            padding: 15px 8%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: rgba(7,11,22,.88);
+            border-bottom: 1px solid var(--detail-border);
+            backdrop-filter: blur(18px);
+        }
 
-Explore ChatGPT ↗
+        .detail-logo {
+            font-size: 25px;
+            font-weight: 900;
+            letter-spacing: 3px;
+        }
+
+        .detail-logo span { color: var(--detail-purple); }
+
+        .detail-nav-links {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            color: var(--detail-muted);
+            font-size: 13px;
+        }
+
+        .detail-nav-links a:hover { color: white; }
+
+        .detail-nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .detail-back,
+        .install-button {
+            padding: 10px 15px;
+            border: 1px solid var(--detail-border);
+            border-radius: 9px;
+            background: rgba(255,255,255,.035);
+            color: white;
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: .25s ease;
+        }
+
+        .detail-back:hover,
+        .install-button:hover {
+            border-color: var(--detail-purple);
+            transform: translateY(-2px);
+        }
+
+        .install-button {
+            background: linear-gradient(110deg,#7655f5,#438dff);
+            border-color: transparent;
+        }
+
+        .install-button:disabled {
+            opacity: .65;
+            cursor: default;
+            transform: none;
+        }
+
+        .detail-hero {
+            min-height: 590px;
+            padding: 95px 9% 85px;
+            display: grid;
+            grid-template-columns: 1.2fr .8fr;
+            align-items: center;
+            gap: 55px;
+            position: relative;
+            isolation: isolate;
+            overflow: hidden;
+            background:
+                radial-gradient(ellipse at 80% 45%,rgba(112,78,255,.2),transparent 42%),
+                radial-gradient(ellipse at 15% 90%,rgba(0,153,255,.09),transparent 35%);
+        }
+
+        .detail-hero::before {
+            content: "";
+            position: absolute;
+            width: 420px;
+            height: 420px;
+            right: 5%;
+            top: 8%;
+            border: 1px solid rgba(157,132,255,.13);
+            border-radius: 50%;
+            box-shadow: 0 0 100px rgba(130,101,255,.08);
+            z-index: -1;
+        }
+
+        .detail-hero-content { max-width: 700px; }
+
+        .detail-category {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            padding: 9px 15px;
+            color: #c6baff;
+            background: rgba(130,101,255,.1);
+            border: 1px solid rgba(130,101,255,.3);
+            border-radius: 30px;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        .detail-category::before {
+            content: "";
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #58e5a7;
+            box-shadow: 0 0 12px #58e5a7;
+        }
+
+        .detail-hero h1 {
+            margin: 25px 0 12px;
+            font-size: clamp(48px,7vw,82px);
+            line-height: 1.04;
+            letter-spacing: -4px;
+            font-weight: 900;
+        }
+
+        .detail-tagline {
+            font-size: clamp(18px,2.3vw,24px);
+            font-weight: 700;
+            color: #c9c2ff;
+            margin-bottom: 22px;
+        }
+
+        .detail-description {
+            max-width: 610px;
+            color: var(--detail-muted);
+            font-size: 16px;
+            line-height: 1.95;
+        }
+
+        .detail-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 13px;
+            margin-top: 32px;
+        }
+
+        .detail-primary,
+        .detail-secondary {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            min-height: 49px;
+            padding: 13px 21px;
+            border-radius: 10px;
+            font-size: 13px;
+            font-weight: 800;
+            transition: .3s ease;
+        }
+
+        .detail-primary {
+            background: linear-gradient(110deg,#7655f5,#438dff);
+            box-shadow: 0 8px 30px rgba(117,85,245,.25);
+        }
+
+        .detail-primary:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 35px rgba(117,85,245,.4);
+        }
+
+        .detail-secondary {
+            border: 1px solid var(--detail-border);
+            background: rgba(255,255,255,.035);
+        }
+
+        .detail-secondary:hover {
+            border-color: var(--detail-purple);
+            transform: translateY(-4px);
+        }
+
+        .detail-visual {
+            min-height: 360px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .detail-orb {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: radial-gradient(circle,rgba(130,101,255,.5),rgba(130,101,255,.02) 70%);
+            filter: blur(5px);
+            animation: detailFloat 7s ease-in-out infinite;
+        }
+
+        .detail-orb::after {
+            content: "";
+            position: absolute;
+            inset: 30px;
+            border: 1px solid rgba(185,165,255,.25);
+            border-radius: 50%;
+        }
+
+        .detail-brand-card {
+            width: min(290px,85%);
+            padding: 35px 25px;
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            background: rgba(17,27,48,.82);
+            border: 1px solid rgba(166,146,255,.35);
+            border-radius: 25px;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 25px 80px rgba(0,0,0,.4),0 0 45px rgba(126,91,255,.15);
+            animation: detailFloat 6s ease-in-out infinite;
+        }
+
+        .detail-brand-symbol {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 27px;
+            background: linear-gradient(135deg,#8766ff,#278fff);
+            box-shadow: 0 0 45px rgba(126,91,255,.35);
+            font-size: 45px;
+            font-weight: 900;
+        }
+
+        .detail-brand-card strong {
+            display: block;
+            font-size: 19px;
+        }
+
+        .detail-brand-card small {
+            display: block;
+            margin-top: 7px;
+            color: var(--detail-muted);
+            font-size: 11px;
+        }
+
+        .detail-brand-status {
+            display: inline-block;
+            margin-top: 24px;
+            color: #58e5a7;
+            font-size: 10px;
+            letter-spacing: 2px;
+        }
+
+        @keyframes detailFloat {
+            0%,100% { transform: translateY(0); }
+            50% { transform: translateY(-13px); }
+        }
+
+        .detail-stats {
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            max-width: 900px;
+            margin: -1px auto 0;
+            padding: 25px 5%;
+            background: rgba(16,26,46,.75);
+            border: 1px solid var(--detail-border);
+            border-radius: 16px;
+            position: relative;
+            z-index: 3;
+        }
+
+        .detail-stat {
+            text-align: center;
+            padding: 8px 15px;
+            border-right: 1px solid var(--detail-border);
+        }
+
+        .detail-stat:last-child { border-right: 0; }
+
+        .detail-stat strong {
+            display: block;
+            font-size: 15px;
+        }
+
+        .detail-stat span {
+            display: block;
+            margin-top: 4px;
+            color: var(--detail-muted);
+            font-size: 11px;
+        }
+
+        .detail-section {
+            padding: 100px 9%;
+        }
+
+        .detail-section-heading {
+            max-width: 720px;
+            margin-bottom: 42px;
+        }
+
+        .detail-eyebrow {
+            display: block;
+            color: #a99aff;
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 3px;
+            margin-bottom: 13px;
+        }
+
+        .detail-section-heading h2 {
+            margin: 0 0 13px;
+            font-size: clamp(30px,4vw,46px);
+            line-height: 1.15;
+            letter-spacing: -1.5px;
+        }
+
+        .detail-section-heading p {
+            color: var(--detail-muted);
+            font-size: 14px;
+            line-height: 1.9;
+        }
+
+        .detail-feature-grid,
+        .detail-use-grid {
+            display: grid;
+            grid-template-columns: repeat(3,minmax(0,1fr));
+            gap: 19px;
+        }
+
+        .detail-feature-card,
+        .detail-use-card {
+            min-height: 235px;
+            padding: 28px;
+            background: linear-gradient(145deg,#131e34,#0e1729);
+            border: 1px solid var(--detail-border);
+            border-radius: 17px;
+            position: relative;
+            overflow: hidden;
+            transition: .3s ease;
+        }
+
+        .detail-feature-card::after,
+        .detail-use-card::after {
+            content: "";
+            position: absolute;
+            width: 130px;
+            height: 130px;
+            right: -65px;
+            bottom: -75px;
+            border-radius: 50%;
+            background: rgba(130,101,255,.12);
+            filter: blur(12px);
+            pointer-events: none;
+        }
+
+        .detail-feature-card:hover,
+        .detail-use-card:hover {
+            transform: translateY(-7px);
+            border-color: rgba(130,101,255,.55);
+            box-shadow: 0 18px 45px rgba(0,0,0,.28);
+        }
+
+        .detail-card-icon {
+            width: 49px;
+            height: 49px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 23px;
+            border-radius: 14px;
+            background: rgba(130,101,255,.14);
+            font-size: 23px;
+        }
+
+        .detail-feature-card h3,
+        .detail-use-card h3 {
+            margin: 0 0 10px;
+            font-size: 18px;
+        }
+
+        .detail-feature-card p,
+        .detail-use-card p {
+            margin: 0;
+            color: var(--detail-muted);
+            font-size: 13px;
+            line-height: 1.9;
+        }
+
+        .detail-use-section {
+            background: linear-gradient(180deg,#0b1120,#080d19);
+        }
+
+        .detail-use-card { min-height: 255px; }
+
+        .detail-use-number {
+            display: block;
+            margin-bottom: 18px;
+            color: #a99aff;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 2px;
+        }
+
+        .detail-workflow {
+            margin: 0 9% 100px;
+            padding: 55px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 35px;
+            background:
+                radial-gradient(circle at 90% 40%,rgba(113,81,255,.2),transparent 40%),
+                linear-gradient(120deg,#121c35,#11152e);
+            border: 1px solid rgba(145,119,255,.22);
+            border-radius: 23px;
+        }
+
+        .detail-workflow h2 {
+            margin: 12px 0;
+            font-size: clamp(27px,3vw,39px);
+            line-height: 1.2;
+        }
+
+        .detail-workflow p {
+            color: var(--detail-muted);
+            font-size: 14px;
+            line-height: 1.9;
+        }
+
+        .detail-workflow-list {
+            display: grid;
+            gap: 13px;
+        }
+
+        .detail-workflow-item {
+            display: flex;
+            align-items: center;
+            gap: 13px;
+            padding: 15px;
+            background: rgba(255,255,255,.035);
+            border: 1px solid var(--detail-border);
+            border-radius: 12px;
+            font-size: 13px;
+        }
+
+        .detail-workflow-item span {
+            width: 30px;
+            height: 30px;
+            flex: 0 0 30px;
+            display: grid;
+            place-items: center;
+            border-radius: 9px;
+            background: rgba(130,101,255,.17);
+            color: #c6baff;
+        }
+
+        .detail-related-grid {
+            display: grid;
+            grid-template-columns: repeat(3,minmax(0,1fr));
+            gap: 18px;
+        }
+
+        .detail-related-card {
+            display: block;
+            padding: 24px;
+            background: linear-gradient(145deg,#131e34,#0e1729);
+            border: 1px solid var(--detail-border);
+            border-radius: 15px;
+            transition: .3s ease;
+        }
+
+        .detail-related-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--detail-purple);
+            box-shadow: 0 15px 35px rgba(0,0,0,.25);
+        }
+
+        .detail-related-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .detail-related-icon { font-size: 24px; }
+
+        .detail-related-tag {
+            color: #a99aff;
+            font-size: 9px;
+            letter-spacing: 1.5px;
+        }
+
+        .detail-related-card h3 {
+            margin: 0 0 7px;
+            font-size: 19px;
+        }
+
+        .detail-related-card p {
+            margin: 0;
+            color: var(--detail-muted);
+            font-size: 12px;
+            line-height: 1.8;
+        }
+
+        .detail-related-arrow {
+            display: block;
+            margin-top: 19px;
+            color: #a99aff;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .detail-final-cta {
+            margin: 0 9% 90px;
+            padding: 65px 25px;
+            text-align: center;
+            background:
+                radial-gradient(ellipse at 50% 100%,rgba(110,79,255,.24),transparent 65%),
+                #101a2e;
+            border: 1px solid rgba(145,119,255,.25);
+            border-radius: 23px;
+        }
+
+        .detail-final-cta h2 {
+            margin: 0 0 13px;
+            font-size: clamp(29px,4vw,43px);
+        }
+
+        .detail-final-cta p {
+            margin: 0 auto 25px;
+            max-width: 570px;
+            color: var(--detail-muted);
+            font-size: 14px;
+            line-height: 1.9;
+        }
+
+        .detail-footer {
+            padding: 35px 9%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 18px;
+            border-top: 1px solid var(--detail-border);
+            background: #060a13;
+        }
+
+        .detail-footer p {
+            margin: 0;
+            color: var(--detail-muted);
+            font-size: 11px;
+        }
+
+        .detail-footer-links {
+            display: flex;
+            gap: 20px;
+            color: var(--detail-muted);
+            font-size: 11px;
+        }
+
+        .detail-footer-links a:hover { color: white; }
+
+        .detail-not-found {
+            max-width: 700px;
+            margin: 100px auto;
+            padding: 50px 25px;
+            text-align: center;
+        }
+
+        .detail-not-found h1 { font-size: 40px; }
+
+        .detail-not-found p { color: var(--detail-muted); }
+
+        .detail-not-found a { color: #b5a5ff; }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(22px);
+            transition: opacity .65s ease,transform .65s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 900px) {
+            .detail-hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+                padding: 80px 7%;
+            }
+
+            .detail-hero-content { margin: auto; }
+
+            .detail-description { margin-left: auto; margin-right: auto; }
+
+            .detail-actions { justify-content: center; }
+
+            .detail-visual { min-height: 310px; }
+
+            .detail-feature-grid,
+            .detail-use-grid,
+            .detail-related-grid {
+                grid-template-columns: repeat(2,minmax(0,1fr));
+            }
+
+            .detail-workflow {
+                grid-template-columns: 1fr;
+                margin-left: 6%;
+                margin-right: 6%;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .detail-nav {
+                padding: 14px 5%;
+                flex-wrap: wrap;
+            }
+
+            .detail-logo { font-size: 22px; }
+
+            .detail-nav-links { display: none; }
+
+            .detail-nav-actions { margin-left: auto; }
+
+            .detail-back,
+            .install-button { padding: 9px 11px; font-size: 11px; }
+
+            .detail-hero {
+                padding: 65px 6% 50px;
+                gap: 15px;
+            }
+
+            .detail-hero h1 {
+                font-size: 49px;
+                letter-spacing: -2px;
+                overflow-wrap: anywhere;
+            }
+
+            .detail-tagline { font-size: 18px; }
+
+            .detail-description { font-size: 14px; }
+
+            .detail-visual { min-height: 280px; }
+
+            .detail-brand-card { width: 255px; }
+
+            .detail-stats {
+                margin: 0 5%;
+                padding: 17px 7px;
+            }
+
+            .detail-stat { padding: 5px 7px; }
+
+            .detail-stat strong { font-size: 12px; }
+
+            .detail-stat span { font-size: 9px; }
+
+            .detail-section { padding: 75px 6%; }
+
+            .detail-feature-grid,
+            .detail-use-grid,
+            .detail-related-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .detail-feature-card,
+            .detail-use-card { min-height: auto; }
+
+            .detail-workflow {
+                margin: 0 5% 70px;
+                padding: 32px 23px;
+            }
+
+            .detail-final-cta {
+                margin: 0 5% 65px;
+                padding: 45px 22px;
+            }
+
+            .detail-footer {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,*::before,*::after {
+                animation-duration: .01ms !important;
+                transition-duration: .01ms !important;
+                scroll-behavior: auto !important;
+            }
+
+            .reveal {
+                opacity: 1;
+                transform: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+<div class="detail-page" id="app">
+
+    <header class="detail-nav">
+        <a class="detail-logo" href="index.html">NEXORA<span>.</span></a>
+
+        <nav class="detail-nav-links" aria-label="Main navigation">
+            <a href="index.html">Home</a>
+            <a href="index.html#tools">Explore AI</a>
+            <a href="compare.html">Smart Compare ✦</a>
+        </nav>
+
+        <div class="detail-nav-actions">
+            <a class="detail-back" href="index.html#tools">← All Tools</a>
+            <button class="install-button" id="installButton" type="button" hidden>
+                Install App ↓
+            </button>
+        </div>
+    </header>
+
+    <main id="detailContent"></main>
+
+    <footer class="detail-footer">
+        <a class="detail-logo" href="index.html">NEXORA<span>.</span></a>
+        <p>Discover Smarter. Automate Better.</p>
+        <div class="detail-footer-links">
+            <a href="index.html">Home</a>
+            <a href="index.html#tools">AI Tools</a>
+            <a href="compare.html">Compare</a>
+        </div>
+        <p>© 2026 NEXORA. All rights reserved.</p>
+    </footer>
+
+</div>
+
+<script>
+const tools = {
+    chatgpt: {
+        name: "ChatGPT",
+        category: "AI ASSISTANT",
+        icon: "✳",
+        tagline: "Think bigger. Create smarter. Get more done.",
+        description: "ChatGPT is an AI assistant that helps you explore ideas, write content, analyze information, solve problems and work through everyday tasks. Use natural conversations to turn questions into insights and ideas into practical results.",
+        website: "https://chatgpt.com/",
+        features: [
+            ["✍️","Writing & Creation","Draft articles, messages, stories, product descriptions and marketing content. Brainstorm ideas, improve your writing and develop your next creative project."],
+            ["🧠","Research & Reasoning","Explore questions, understand unfamiliar concepts, compare ideas and work through complex problems with step-by-step explanations."],
+            ["⚡","Everyday Productivity","Plan projects, organize information, prepare reports and create useful workflows for your personal and professional tasks."]
+        ],
+        uses: [
+            ["🚀","Content Creation","Develop blog articles, social media captions, product descriptions and marketing campaigns. Brainstorm topics, build outlines and refine your writing."],
+            ["💡","Learning & Research","Learn unfamiliar subjects, simplify complex explanations, summarize material and explore research questions through guided discussions."],
+            ["🎯","Business Productivity","Draft proposals, organize business ideas, analyze information, prepare reports and plan repeatable workflows for everyday operations."]
+        ],
+        workflow: ["Describe your goal or ask a question","Explore ideas and refine the response","Turn the result into useful work"],
+        related: ["claude","gemini","perplexity"]
+    },
+
+    claude: {
+        name: "Claude",
+        category: "AI ASSISTANT",
+        icon: "✦",
+        tagline: "A thoughtful partner for complex work.",
+        description: "Claude is an AI assistant designed to help with writing, reasoning, coding and understanding information. It can work through detailed instructions and long documents to support thoughtful, structured work.",
+        website: "https://claude.ai/",
+        features: [
+            ["✍️","Thoughtful Writing","Create polished drafts, revise long-form content, adjust tone and organize complex ideas into clear communication."],
+            ["📚","Document Analysis","Work through lengthy text, extract important details, summarize material and compare information across documents."],
+            ["💻","Coding & Reasoning","Explore programming questions, understand code, troubleshoot problems and develop structured approaches to technical tasks."]
+        ],
+        uses: [
+            ["📝","Long-form Writing","Develop articles, reports, proposals and detailed documents with a focus on clarity, structure and consistent tone."],
+            ["🔍","Document Research","Summarize lengthy materials, identify key themes and turn dense information into useful notes."],
+            ["🛠️","Software Development","Discuss architecture, review code, investigate bugs and work through programming challenges."]
+        ],
+        workflow: ["Share your question or material","Work through the important details","Refine the result into a clear deliverable"],
+        related: ["chatgpt","gemini","copilot"]
+    },
+
+    gemini: {
+        name: "Gemini",
+        category: "AI ASSISTANT",
+        icon: "✧",
+        tagline: "Explore ideas across text, images and more.",
+        description: "Google Gemini is an AI assistant that helps people research, write, understand information and explore creative ideas. Its multimodal capabilities support work with different types of content.",
+        website: "https://gemini.google.com/",
+        features: [
+            ["🌐","Explore Information","Ask questions, investigate topics and get help understanding ideas across a wide range of subjects."],
+            ["🎨","Multimodal Creativity","Work with text and supported visual inputs to explore ideas, understand content and develop creative concepts."],
+            ["⚡","Everyday Assistance","Plan activities, organize information, draft content and approach everyday tasks with AI assistance."]
+        ],
+        uses: [
+            ["📖","Learning & Discovery","Explore unfamiliar topics, request explanations and organize information into understandable summaries."],
+            ["🖼️","Creative Exploration","Develop concepts, brainstorm visual ideas and work with supported image-based tasks."],
+            ["📋","Work & Planning","Prepare drafts, organize projects and develop plans for personal or professional activities."]
+        ],
+        workflow: ["Start with a question or idea","Explore information and possible directions","Develop a practical next step"],
+        related: ["chatgpt","claude","perplexity"]
+    },
+
+    midjourney: {
+        name: "Midjourney",
+        category: "AI IMAGE",
+        icon: "◈",
+        tagline: "Turn imagination into extraordinary visuals.",
+        description: "Midjourney is an AI image-generation platform that transforms written prompts into distinctive visual artwork. It helps creators explore styles, compositions, concepts and imaginative scenes.",
+        website: "https://www.midjourney.com/",
+        features: [
+            ["🎨","Prompt-Based Images","Describe a scene, subject or concept and explore generated visual interpretations."],
+            ["🌈","Artistic Styles","Experiment with visual directions, moods, lighting, textures and creative aesthetics."],
+            ["🖼️","Visual Exploration","Generate alternative compositions and explore different creative directions for a project."]
+        ],
+        uses: [
+            ["📣","Marketing Concepts","Explore campaign artwork, visual themes and creative directions for promotional projects."],
+            ["🎮","Creative Worlds","Develop character concepts, environments, fantasy scenes and visual inspiration for games or stories."],
+            ["✨","Design Inspiration","Explore mood boards, artistic references and visual concepts before beginning a design project."]
+        ],
+        workflow: ["Describe the image you imagine","Experiment with prompt details and styles","Explore variations and select a direction"],
+        related: ["firefly","leonardo","gamma"]
+    },
+
+    firefly: {
+        name: "Adobe Firefly",
+        category: "AI IMAGE",
+        icon: "✺",
+        tagline: "Bring creative ideas into your visual workflow.",
+        description: "Adobe Firefly offers generative AI features for creative image and design workflows. It helps creators explore visual concepts, generate content and enhance supported creative projects.",
+        website: "https://firefly.adobe.com/",
+        features: [
+            ["🖌️","Generative Creation","Explore image-generation and other creative features using text prompts and supported inputs."],
+            ["🧩","Creative Editing","Use supported generative editing tools to explore changes and additions to visual content."],
+            ["🎨","Design Exploration","Experiment with creative directions and visual treatments for design projects."]
+        ],
+        uses: [
+            ["📱","Social Media Design","Explore artwork and visual assets for digital campaigns and social content."],
+            ["🛍️","Product Visuals","Develop creative concepts and visual variations for product and marketing materials."],
+            ["🖼️","Creative Projects","Explore image ideas and supported editing workflows for personal and professional designs."]
+        ],
+        workflow: ["Choose a creative task","Describe the desired visual result","Refine the generated content in your workflow"],
+        related: ["midjourney","leonardo","gamma"]
+    },
+
+    leonardo: {
+        name: "Leonardo AI",
+        category: "AI IMAGE",
+        icon: "✧",
+        tagline: "Create worlds, artwork and digital assets.",
+        description: "Leonardo AI provides creative tools for generating and developing visual assets. It supports workflows for concept art, illustrations, game assets and other digital imagery.",
+        website: "https://leonardo.ai/",
+        features: [
+            ["🖼️","Image Generation","Explore generated artwork and visual concepts using descriptive prompts."],
+            ["🎮","Asset Creation","Develop visual ideas for characters, environments and digital creative projects."],
+            ["🧪","Style Experimentation","Explore different visual approaches and refine creative directions."]
+        ],
+        uses: [
+            ["🎮","Game Development","Explore concept art, character ideas, environments and supporting visual assets."],
+            ["📢","Creative Marketing","Develop visual directions and artwork for promotional content."],
+            ["📚","Illustration","Explore visual concepts for stories, presentations and creative publications."]
+        ],
+        workflow: ["Choose a visual concept","Describe the style and details","Refine the image direction"],
+        related: ["midjourney","firefly","runway"]
+    },
+
+    runway: {
+        name: "Runway",
+        category: "AI VIDEO",
+        icon: "▶",
+        tagline: "Explore a new way to create moving images.",
+        description: "Runway is a creative platform with AI-powered video tools. It helps creators experiment with video generation, visual effects and production workflows.",
+        website: "https://runwayml.com/",
+        features: [
+            ["🎬","Video Generation","Explore AI-assisted video creation using supported prompts and visual inputs."],
+            ["✨","Creative Effects","Experiment with visual transformations and supported editing tools."],
+            ["🎥","Production Workflow","Explore ways to develop and refine visual storytelling projects."]
+        ],
+        uses: [
+            ["📺","Marketing Videos","Create visual concepts and short-form video ideas for promotional campaigns."],
+            ["🎞️","Storytelling","Explore scenes, motion concepts and visual directions for creative projects."],
+            ["📱","Social Content","Develop video ideas for digital platforms and audience engagement."]
+        ],
+        workflow: ["Start with a scene or concept","Explore generation and editing tools","Refine your visual sequence"],
+        related: ["pika","synthesia","descript"]
+    },
+
+    pika: {
+        name: "Pika",
+        category: "AI VIDEO",
+        icon: "▷",
+        tagline: "Give your creative ideas motion.",
+        description: "Pika is an AI-powered creative video platform that helps users explore video generation and visual effects from prompts and supported media.",
+        website: "https://pika.art/",
+        features: [
+            ["🎞️","Prompt-to-Video","Explore short video concepts from written descriptions using available generation features."],
+            ["🖼️","Image Animation","Experiment with bringing still visual concepts into motion."],
+            ["✨","Creative Effects","Explore distinctive effects and visual transformations for video ideas."]
+        ],
+        uses: [
+            ["📱","Short-form Content","Develop engaging visual clips for social media and digital storytelling."],
+            ["🎨","Creative Experiments","Explore imaginative motion concepts and visual effects."],
+            ["📣","Campaign Ideas","Create visual concepts that help communicate a product or creative message."]
+        ],
+        workflow: ["Choose a prompt or visual input","Explore motion and creative options","Review and refine the clip"],
+        related: ["runway","synthesia","descript"]
+    },
+
+    synthesia: {
+        name: "Synthesia",
+        category: "AI VIDEO",
+        icon: "◉",
+        tagline: "Turn information into presenter-style videos.",
+        description: "Synthesia is an AI video platform focused on presenter-style videos and AI avatars. It helps teams create training, educational and business communication content.",
+        website: "https://www.synthesia.io/",
+        features: [
+            ["🗣️","AI Presenters","Create presenter-style video experiences using available AI avatar features."],
+            ["🌍","Video Communication","Explore supported language and voice options for communicating information."],
+            ["📚","Training Content","Develop structured video materials for learning and business communication."]
+        ],
+        uses: [
+            ["🏢","Team Training","Create instructional video concepts for onboarding and internal learning."],
+            ["🎓","Education","Present lessons, explanations and learning material in a video format."],
+            ["📢","Business Communication","Develop presenter-led updates and information videos for teams and customers."]
+        ],
+        workflow: ["Prepare your script","Choose a presenter and video settings","Generate and review your video"],
+        related: ["runway","pika","descript"]
+    },
+
+    copilot: {
+        name: "GitHub Copilot",
+        category: "AI CODING",
+        icon: "⌘",
+        tagline: "Build software with an AI coding partner.",
+        description: "GitHub Copilot is an AI coding assistant integrated into supported developer workflows. It helps programmers write code, understand projects and work through development tasks.",
+        website: "https://github.com/features/copilot",
+        features: [
+            ["💻","Code Assistance","Get AI-powered suggestions and help while writing and editing code."],
+            ["🧠","Code Understanding","Explore explanations and assistance for understanding existing code."],
+            ["🛠️","Developer Workflow","Use supported AI features to help with development tasks and problem-solving."]
+        ],
+        uses: [
+            ["🌐","Web Development","Explore assistance for HTML, CSS, JavaScript and other supported development technologies."],
+            ["🐛","Debugging","Investigate errors, understand code behavior and explore possible fixes."],
+            ["📦","Project Development","Work through implementation ideas, code structure and everyday programming tasks."]
+        ],
+        workflow: ["Open a supported development environment","Describe or begin a coding task","Review, test and refine suggestions"],
+        related: ["cursor","claude","n8n"]
+    },
+
+    cursor: {
+        name: "Cursor",
+        category: "AI CODING",
+        icon: "⌘",
+        tagline: "A code editor built around AI-assisted development.",
+        description: "Cursor is an AI-powered code editor designed to help developers understand codebases, make changes and work through software development tasks.",
+        website: "https://cursor.com/",
+        features: [
+            ["⌨️","AI Code Editing","Explore AI-assisted coding features directly within a developer-focused editor."],
+            ["🧠","Codebase Understanding","Work with supported context from your project to investigate and understand code."],
+            ["⚙️","Development Assistance","Explore ways to plan changes, troubleshoot issues and improve coding workflows."]
+        ],
+        uses: [
+            ["🌐","Building Websites","Develop and refine website projects with AI-assisted coding workflows."],
+            ["🔧","Code Maintenance","Understand existing files and explore changes to improve a project."],
+            ["🚀","Rapid Prototyping","Experiment with implementation ideas and build early software versions."]
+        ],
+        workflow: ["Open your project in Cursor","Describe the change you want to make","Review the proposed edits and test your code"],
+        related: ["copilot","claude","chatgpt"]
+    },
+
+    zapier: {
+        name: "Zapier",
+        category: "AUTOMATION",
+        icon: "⚡",
+        tagline: "Connect your apps and automate repetitive work.",
+        description: "Zapier is an automation platform that connects supported applications and services. It helps users create workflows that move information and trigger actions across their tools.",
+        website: "https://zapier.com/",
+        features: [
+            ["🔗","App Connections","Connect supported services and move information between applications."],
+            ["⚡","Workflow Automation","Create automated sequences triggered by events and conditions."],
+            ["🧩","No-Code Building","Design many workflows through a visual interface without building every integration from scratch."]
+        ],
+        uses: [
+            ["📩","Lead Management","Explore workflows that organize incoming leads and send information to connected systems."],
+            ["📋","Team Operations","Automate repetitive updates, notifications and task handoffs."],
+            ["📈","Business Processes","Connect everyday business apps to reduce manual data entry and repetitive steps."]
+        ],
+        workflow: ["Choose the apps you want to connect","Define a trigger and resulting actions","Test and activate your automation"],
+        related: ["make","n8n","notion"]
+    },
+
+    n8n: {
+        name: "n8n",
+        category: "AUTOMATION",
+        icon: "⛓",
+        tagline: "Build connected workflows with greater flexibility.",
+        description: "n8n is a workflow automation platform that helps users connect services, create integrations and build sophisticated automated processes, including AI-powered workflows.",
+        website: "https://n8n.io/",
+        features: [
+            ["🔀","Visual Workflows","Connect nodes and services to design multi-step automation workflows."],
+            ["🤖","AI Integrations","Explore supported AI services and create workflows that use language models and other AI capabilities."],
+            ["🧑‍💻","Flexible Automation","Build more customized workflows with supported integrations and code when needed."]
+        ],
+        uses: [
+            ["📊","Data Workflows","Move, transform and organize information across connected services."],
+            ["🤖","AI Assistants","Experiment with automated processes that combine AI services and business tools."],
+            ["🏢","Operations","Connect internal systems and automate repeatable business processes."]
+        ],
+        workflow: ["Map the process you want to automate","Connect services and configure workflow steps","Test the workflow and monitor its results"],
+        related: ["zapier","make","copilot"]
+    },
+
+    make: {
+        name: "Make",
+        category: "AUTOMATION",
+        icon: "⚡",
+        tagline: "Visualize workflows. Automate what slows you down.",
+        description: "Make is a visual automation platform that connects applications and services through configurable workflows. It helps users design and manage multi-step business processes.",
+        website: "https://www.make.com/",
+        features: [
+            ["🧩","Visual Automation","Design workflows through a visual interface that shows how information moves."],
+            ["🔗","App Integrations","Connect supported apps and services to coordinate tasks."],
+            ["⚙️","Process Design","Build multi-step automations with filters, conditions and data transformations."]
+        ],
+        uses: [
+            ["🛒","E-commerce Operations","Explore automations for order updates, customer information and connected business apps."],
+            ["📬","Marketing Workflows","Connect marketing services and automate repeatable campaign tasks."],
+            ["📋","Team Productivity","Coordinate data and actions between tools used by your team."]
+        ],
+        workflow: ["Select the services to connect","Build the visual automation scenario","Test the flow and activate it"],
+        related: ["zapier","n8n","notion"]
+    },
+
+    notion: {
+        name: "Notion AI",
+        category: "PRODUCTIVITY",
+        icon: "▣",
+        tagline: "Bring your notes, knowledge and work together.",
+        description: "Notion AI brings AI-assisted features into the Notion workspace. It can help users work with documents, organize information and develop content alongside their existing workspace tools.",
+        website: "https://www.notion.com/product/ai",
+        features: [
+            ["📝","Writing Assistance","Explore AI support for drafting, rewriting and improving workspace content."],
+            ["🧠","Knowledge Organization","Work with information and documents inside a connected workspace."],
+            ["📋","Team Productivity","Support planning, documentation and collaborative work with available AI features."]
+        ],
+        uses: [
+            ["📚","Knowledge Bases","Organize notes, reference material and internal documentation."],
+            ["🗓️","Project Planning","Structure project information, tasks and team resources."],
+            ["✍️","Content Development","Develop meeting notes, drafts, summaries and other workspace documents."]
+        ],
+        workflow: ["Organize your information in a workspace","Use available AI features on your content","Refine and share the result"],
+        related: ["chatgpt","perplexity","zapier"]
+    },
+
+    perplexity: {
+        name: "Perplexity",
+        category: "PRODUCTIVITY",
+        icon: "⌕",
+        tagline: "Explore questions with web-grounded answers.",
+        description: "Perplexity is an AI-powered answer and research platform that helps users explore questions and discover information with linked sources and supporting references.",
+        website: "https://www.perplexity.ai/",
+        features: [
+            ["🔎","Answer Discovery","Explore questions and receive synthesized answers from available information."],
+            ["🔗","Source References","Review linked sources to investigate information and follow up on useful material."],
+            ["📚","Research Exploration","Develop follow-up questions and explore topics from different angles."]
+        ],
+        uses: [
+            ["🎓","Academic Exploration","Discover background information and locate sources for further research."],
+            ["📈","Market Research","Explore companies, products, industries and developing topics."],
+            ["🧭","Everyday Questions","Investigate practical questions and compare information from multiple sources."]
+        ],
+        workflow: ["Ask a focused research question","Review the answer and linked sources","Explore follow-up questions and verify important details"],
+        related: ["chatgpt","claude","gemini"]
+    },
+
+    gamma: {
+        name: "Gamma",
+        category: "PRODUCTIVITY",
+        icon: "◫",
+        tagline: "Turn your ideas into polished visual content.",
+        description: "Gamma is a platform for creating presentations, documents and web-style content. It helps users turn written ideas into structured visual experiences.",
+        website: "https://gamma.app/",
+        features: [
+            ["📊","Presentation Creation","Develop presentation concepts and structured slides from your ideas."],
+            ["📄","Visual Documents","Explore ways to turn information into organized, visually engaging documents."],
+            ["🌐","Web-Style Content","Create shareable visual content and page-style experiences."]
+        ],
+        uses: [
+            ["💼","Business Presentations","Develop pitch decks, proposals and internal presentations."],
+            ["🎓","Educational Materials","Organize lessons, explanations and learning content into visual formats."],
+            ["📣","Marketing Content","Create visual storytelling materials for campaigns and business communication."]
+        ],
+        workflow: ["Start with an idea or source content","Choose a format and visual direction","Refine the content and share it"],
+        related: ["notion","chatgpt","firefly"]
+    },
+
+    descript: {
+        name: "Descript",
+        category: "AI VIDEO",
+        icon: "▶",
+        tagline: "Edit audio and video through a text-based workflow.",
+        description: "Descript is an audio and video editing platform with AI-powered features. Its transcript-based workflow helps creators edit spoken content and develop multimedia projects.",
+        website: "https://www.descript.com/",
+        features: [
+            ["🎙️","Transcript-Based Editing","Work with transcripts to edit supported audio and video content."],
+            ["✂️","Media Production","Explore tools for refining recordings, assembling content and improving production workflows."],
+            ["✨","AI Editing Features","Use supported AI features for tasks such as transcription and content refinement."]
+        ],
+        uses: [
+            ["🎧","Podcast Production","Edit conversations, organize recordings and prepare podcast content."],
+            ["📹","Video Creation","Develop videos, tutorials and other spoken-content projects."],
+            ["📱","Creator Content","Prepare clips, captions and multimedia content for digital platforms."]
+        ],
+        workflow: ["Import your recording","Edit and refine the transcript or media","Prepare and export your finished content"],
+        related: ["runway","pika","synthesia"]
+    }
+};
+
+const icons = {
+    chatgpt: "✳", claude: "✦", gemini: "✧",
+    midjourney: "◈", firefly: "✺", leonardo: "✧",
+    runway: "▶", pika: "▷", synthesia: "◉",
+    copilot: "⌘", cursor: "⌘",
+    zapier: "⚡", n8n: "⛓", make: "⚡",
+    notion: "▣", perplexity: "⌕", gamma: "◫", descript: "▶"
+};
+
+const params = new URLSearchParams(window.location.search);
+const selectedKey = (params.get("tool") || "chatgpt").toLowerCase();
+const selectedTool = tools[selectedKey];
+const content = document.getElementById("detailContent");
+
+function escapeHTML(value) {
+    return String(value).replace(/[&<>"']/g, char => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#039;"
+    })[char]);
+}
+
+function renderNotFound() {
+    document.title = "Tool Not Found — NEXORA";
+    content.innerHTML = `
+        <section class="detail-not-found">
+            <span class="detail-eyebrow">NEXORA DISCOVERY</span>
+            <h1>Tool not found.</h1>
+            <p>We couldn't find that AI tool. Explore the NEXORA collection to discover something new.</p>
+            <a href="index.html#tools">← Return to AI Tools</a>
+        </section>
+    `;
+}
+
+function featureCard(item) {
+    return `
+        <article class="detail-feature-card reveal">
+            <div class="detail-card-icon">${item[0]}</div>
+            <h3>${escapeHTML(item[1])}</h3>
+            <p>${escapeHTML(item[2])}</p>
+        </article>
+    `;
+}
+
+function useCard(item, index) {
+    return `
+        <article class="detail-use-card reveal">
+            <span class="detail-use-number">USE CASE 0${index + 1}</span>
+            <div class="detail-card-icon">${item[0]}</div>
+            <h3>${escapeHTML(item[1])}</h3>
+            <p>${escapeHTML(item[2])}</p>
+        </article>
+    `;
+}
+
+function relatedCard(key) {
+    const item = tools[key];
+    if (!item) return "";
+
+    return `
+        <a class="detail-related-card reveal" href="tool.html?tool=${encodeURIComponent(key)}">
+            <div class="detail-related-top">
+                <span class="detail-related-icon">${icons[key] || "✧"}</span>
+                <span class="detail-related-tag">${escapeHTML(item.category)}</span>
+            </div>
+            <h3>${escapeHTML(item.name)}</h3>
+            <p>${escapeHTML(item.tagline)}</p>
+            <span class="detail-related-arrow">Explore Tool ↗</span>
+        </a>
+    `;
+}
+
+function renderTool(key, tool) {
+    document.title = `${tool.name} — Discover AI Tools | NEXORA`;
+    document.querySelector('meta[name="description"]').content =
+        `Discover ${tool.name}: capabilities, practical use cases and ways to explore this AI platform with NEXORA.`;
+
+    const related = tool.related
+        .filter(item => item !== key && tools[item])
+        .map(relatedCard)
+        .join("");
+
+    const workflow = tool.workflow.map((step, index) => `
+        <div class="detail-workflow-item">
+            <span>${index + 1}</span>
+            ${escapeHTML(step)}
+        </div>
+    `).join("");
+
+    content.innerHTML = `
+        <section class="detail-hero">
+            <div class="detail-hero-content">
+                <span class="detail-category">${escapeHTML(tool.category)}</span>
+                <h1>Discover ${escapeHTML(tool.name)}</h1>
+                <div class="detail-tagline">${escapeHTML(tool.tagline)}</div>
+                <p class="detail-description">${escapeHTML(tool.description)}</p>
+
+                <div class="detail-actions">
+                    <a class="detail-primary" href="${escapeHTML(tool.website)}" target="_blank" rel="noopener noreferrer">
+                        Visit Official Website ↗
+                    </a>
+                    <a class="detail-secondary" href="#related">
+                        Explore More Tools
+                    </a>
+                </div>
+            </div>
+
+            <div class="detail-visual" aria-hidden="true">
+                <div class="detail-orb"></div>
+                <div class="detail-brand-card">
+                    <div class="detail-brand-symbol">${icons[key] || "✧"}</div>
+                    <strong>${escapeHTML(tool.name)}</strong>
+                    <small>POWERED BY POSSIBILITY</small>
+                    <span class="detail-brand-status">● EXPLORE THE FUTURE</span>
+                </div>
+            </div>
+        </section>
+
+        <div class="detail-stats">
+            <div class="detail-stat">
+                <strong>${escapeHTML(tool.category)}</strong>
+                <span>Tool category</span>
+            </div>
+            <div class="detail-stat">
+                <strong>3 Capabilities</strong>
+                <span>Explore what it can do</span>
+            </div>
+            <div class="detail-stat">
+                <strong>3 Use Cases</strong>
+                <span>Discover practical ideas</span>
+            </div>
+        </div>
+
+        <section class="detail-section" id="capabilities">
+            <div class="detail-section-heading reveal">
+                <span class="detail-eyebrow">✳ EXPLORE THE CAPABILITIES</span>
+                <h2>What makes ${escapeHTML(tool.name)} powerful?</h2>
+                <p>Explore the core capabilities and discover how this platform can support different kinds of work.</p>
+            </div>
+            <div class="detail-feature-grid">
+                ${tool.features.map(featureCard).join("")}
+            </div>
+        </section>
+
+        <section class="detail-section detail-use-section" id="use-cases">
+            <div class="detail-section-heading reveal">
+                <span class="detail-eyebrow">BUILT FOR POSSIBILITIES</span>
+                <h2>What can you use it for?</h2>
+                <p>Move beyond features. Explore practical ways to bring this technology into your everyday projects.</p>
+            </div>
+            <div class="detail-use-grid">
+                ${tool.uses.map(useCard).join("")}
+            </div>
+        </section>
+
+        <section class="detail-workflow reveal">
+            <div>
+                <span class="detail-eyebrow">YOUR NEXT BIG IDEA</span>
+                <h2>Start with an idea.<br>Build something meaningful.</h2>
+                <p>Every great result starts with a clear goal. Use this simple approach to explore the platform and find a workflow that fits your needs.</p>
+            </div>
+            <div class="detail-workflow-list">
+                ${workflow}
+            </div>
+        </section>
+
+        <section class="detail-section" id="related">
+            <div class="detail-section-heading reveal">
+                <span class="detail-eyebrow">KEEP EXPLORING</span>
+                <h2>Discover Related AI Tools</h2>
+                <p>Explore more powerful tools in the ${escapeHTML(tool.category.toLowerCase())} category and beyond. Find the right platform for your next idea.</p>
+            </div>
+            <div class="detail-related-grid">
+                ${related}
+            </div>
+        </section>
+
+        <section class="detail-final-cta">
+            <span class="detail-eyebrow">YOUR NEXT DISCOVERY STARTS HERE</span>
+            <h2>Ready to explore ${escapeHTML(tool.name)}?</h2>
+            <p>Visit the official platform to discover its latest features, available plans and possibilities.</p>
+            <a class="detail-primary" href="${escapeHTML(tool.website)}" target="_blank" rel="noopener noreferrer">
+                Explore ${escapeHTML(tool.name)} ↗
+            </a>
+        </section>
+    `;
+
+    document.querySelectorAll(".detail-related-card").forEach(card => {
+        card.addEventListener("click", event => {
+            if (event.ctrlKey || event.metaKey || event.shiftKey) return;
+            // Normal navigation is handled by the link.
+        });
+    });
+
+    setupReveal();
+}
+
+function setupReveal() {
+    const elements = document.querySelectorAll(".reveal");
+
+    if (!("IntersectionObserver" in window) ||
+        window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        elements.forEach(element => element.classList.add("visible"));
+        return;
+    }
+
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.12 });
+
+    elements.forEach(element => observer.observe(element));
+}
+
+if (selectedTool) {
+    renderTool(selectedKey, selectedTool);
+} else {
+    renderNotFound();
+}
+
+/* PWA INSTALL PROMPT */
+let installPrompt = null;
+const installButton = document.getElementById("installButton");
+
+window.addEventListener("beforeinstallprompt", event => {
+    event.preventDefault();
+    installPrompt = event;
+    installButton.hidden = false;
+});
+
+installButton.addEventListener("click", async () => {
+    if (!installPrompt) return;
+
+    installPrompt.prompt();
+    await installPrompt.userChoice;
+
+    installPrompt = null;
+    installButton.hidden = true;
+});
+
+window.addEventListener("appinstalled", () => {
+    installButton.textContent = "App Installed ✓";
+    installButton.hidden = false;
+    installButton.disabled = true;
+});
+
+/* SERVICE WORKER — ACTIVATED WHEN THE PWA FILES ARE ADDED */
+if ("serviceWorker" in navigator && location.protocol.startsWith("http")) {
+    window.addEventListener("load", () => {
+        navigator.serviceWorker.register("./service-worker.js")
+            .catch(error => console.warn("NEXORA offline support is not active yet.", error));
+    });
+}
+</script>
+</body>
+</html>
