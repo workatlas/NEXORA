@@ -13,7 +13,6 @@ const APP_FILES = [
   "./compare.html",
   "./offline.html",
   "./manifest.json",
-  "./pwa.js",
   "./css/style.css",
   "./icon-192.png",
   "./icon-512.png",
@@ -21,6 +20,7 @@ const APP_FILES = [
 ];
 
 /* INSTALL */
+
 self.addEventListener("install", (event) => {
   event.waitUntil(
     (async () => {
@@ -31,7 +31,7 @@ self.addEventListener("install", (event) => {
           try {
             await cache.add(file);
           } catch (error) {
-            // Skip unavailable files without blocking installation.
+            // Skip unavailable files without stopping installation.
           }
         })
       );
@@ -42,6 +42,7 @@ self.addEventListener("install", (event) => {
 });
 
 /* ACTIVATE */
+
 self.addEventListener("activate", (event) => {
   event.waitUntil(
     (async () => {
@@ -62,6 +63,7 @@ self.addEventListener("activate", (event) => {
 });
 
 /* FETCH */
+
 self.addEventListener("fetch", (event) => {
   const request = event.request;
 
@@ -69,10 +71,10 @@ self.addEventListener("fetch", (event) => {
 
   const url = new URL(request.url);
 
-  // Only handle requests from this NEXORA website.
+  // Only handle requests from NEXORA.
   if (url.origin !== self.location.origin) return;
 
-  // HTML pages: network first, cache fallback.
+  // HTML pages: network first, then offline fallback.
   if (request.mode === "navigate") {
     event.respondWith(
       (async () => {
@@ -88,17 +90,16 @@ self.addEventListener("fetch", (event) => {
         } catch (error) {
           const cache = await caches.open(CACHE_NAME);
 
-          // First try the exact page and query.
-          let cachedPage = await cache.match(request);
+          // First try the exact page, including its query string.
+          const exactPage = await cache.match(request);
+          if (exactPage) return exactPage;
 
-          // Then try the same page without its query string.
-          if (!cachedPage) {
-            cachedPage = await cache.match(
-              url.origin + url.pathname
-            );
-          }
+          // Then try the base HTML page without query parameters.
+          const basePage = await cache.match(
+            url.origin + url.pathname
+          );
 
-          if (cachedPage) return cachedPage;
+          if (basePage) return basePage;
 
           const offlinePage = await cache.match("./offline.html");
           if (offlinePage) return offlinePage;
@@ -122,7 +123,7 @@ self.addEventListener("fetch", (event) => {
     return;
   }
 
-  // Other local files: cache first.
+  // Other local resources: cache first.
   event.respondWith(
     (async () => {
       const cache = await caches.open(CACHE_NAME);
@@ -139,12 +140,15 @@ self.addEventListener("fetch", (event) => {
 
         return response;
       } catch (error) {
-        return new Response("Resource unavailable offline.", {
-          status: 503,
-          headers: {
-            "Content-Type": "text/plain; charset=utf-8"
+        return new Response(
+          "Resource unavailable offline.",
+          {
+            status: 503,
+            headers: {
+              "Content-Type": "text/plain; charset=utf-8"
+            }
           }
-        });
+        );
       }
     })()
   );
