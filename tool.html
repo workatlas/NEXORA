@@ -1,0 +1,624 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore AI tools with NEXORA.">
+    <title>Explore AI Tool — NEXORA</title>
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        .detail-page {
+            min-height: 100vh;
+            background:
+                radial-gradient(ellipse at 75% 20%, rgba(130,101,255,.16), transparent 42%),
+                #080d19;
+        }
+
+        .detail-nav {
+            min-height: 80px;
+            padding: 18px 9%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255,255,255,.08);
+        }
+
+        .back-link {
+            color: #b7a6ff;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .detail-hero {
+            max-width: 1150px;
+            margin: auto;
+            padding: 100px 30px 75px;
+            display: grid;
+            grid-template-columns: 1.3fr .7fr;
+            align-items: center;
+            gap: 55px;
+        }
+
+        .detail-badge {
+            display: inline-block;
+            padding: 8px 14px;
+            border: 1px solid rgba(130,101,255,.4);
+            border-radius: 30px;
+            color: #b7a6ff;
+            background: rgba(130,101,255,.1);
+            font-size: 11px;
+            letter-spacing: 2px;
+            margin-bottom: 24px;
+        }
+
+        .detail-copy h1 {
+            font-size: clamp(44px, 6vw, 70px);
+            line-height: 1.1;
+            letter-spacing: -2px;
+            margin-bottom: 22px;
+        }
+
+        .detail-copy h1 span {
+            background: linear-gradient(100deg,#a18aff,#47caff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .detail-tagline {
+            color: #dce5f7;
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        .detail-description {
+            max-width: 620px;
+            color: #9ba9c1;
+            line-height: 1.9;
+            font-size: 15px;
+            margin-bottom: 30px;
+        }
+
+        .detail-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+
+        .detail-visual {
+            min-height: 330px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .detail-orb {
+            position: absolute;
+            width: 290px;
+            height: 290px;
+            border-radius: 50%;
+            background: radial-gradient(circle,rgba(130,101,255,.5),transparent 70%);
+            filter: blur(8px);
+        }
+
+        .detail-icon {
+            position: relative;
+            z-index: 1;
+            width: 190px;
+            height: 190px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 40px;
+            font-size: 90px;
+            background: linear-gradient(135deg,#7655f5,#278fff);
+            border: 1px solid rgba(255,255,255,.2);
+            box-shadow: 0 25px 90px rgba(117,85,245,.35);
+        }
+
+        .detail-content {
+            max-width: 1150px;
+            margin: auto;
+            padding: 20px 30px 100px;
+        }
+
+        .detail-section-heading {
+            margin-bottom: 30px;
+        }
+
+        .detail-section-heading small {
+            color: #a18aff;
+            letter-spacing: 3px;
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .detail-section-heading h2 {
+            font-size: clamp(28px,4vw,40px);
+            margin-top: 10px;
+        }
+
+        .detail-grid {
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 18px;
+            margin-bottom: 75px;
+        }
+
+        .detail-card {
+            padding: 27px;
+            border: 1px solid rgba(255,255,255,.09);
+            border-radius: 16px;
+            background: linear-gradient(145deg,#131e34,#0e1729);
+        }
+
+        .detail-card .card-icon {
+            font-size: 27px;
+            margin-bottom: 18px;
+        }
+
+        .detail-card h3 {
+            font-size: 17px;
+            margin-bottom: 10px;
+        }
+
+        .detail-card p {
+            color: #9ba9c1;
+            font-size: 13px;
+            line-height: 1.8;
+        }
+
+        .detail-bottom {
+            padding: 38px;
+            border: 1px solid rgba(145,119,255,.25);
+            border-radius: 20px;
+            background: linear-gradient(120deg,#121c35,#11152e);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 25px;
+        }
+
+        .detail-bottom h2 {
+            font-size: 25px;
+            margin-bottom: 8px;
+        }
+
+        .detail-bottom p {
+            color: #9ba9c1;
+            font-size: 13px;
+        }
+
+        .detail-footer {
+            padding: 35px 9%;
+            border-top: 1px solid rgba(255,255,255,.08);
+            color: #8290aa;
+            font-size: 12px;
+            text-align: center;
+        }
+
+        .not-found {
+            max-width: 700px;
+            margin: 100px auto;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .not-found h1 {
+            font-size: 38px;
+            margin-bottom: 15px;
+        }
+
+        .not-found p {
+            color: #9ba9c1;
+            margin-bottom: 25px;
+        }
+
+        @media(max-width:750px) {
+            .detail-hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+                padding-top: 70px;
+            }
+
+            .detail-description {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .detail-actions {
+                justify-content: center;
+            }
+
+            .detail-visual {
+                min-height: 240px;
+            }
+
+            .detail-icon {
+                width: 150px;
+                height: 150px;
+                font-size: 70px;
+            }
+
+            .detail-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .detail-bottom {
+                text-align: center;
+                justify-content: center;
+            }
+
+            .detail-nav {
+                padding: 18px 6%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+<div class="detail-page">
+
+    <header class="detail-nav">
+        <a href="index.html" class="logo">NEXORA<span>.</span></a>
+        <a href="index.html#tools" class="back-link">← Back to Discovery</a>
+    </header>
+
+    <main id="detailRoot">
+        <div class="not-found">
+            <h1>Loading NEXORA Intelligence...</h1>
+            <p>Preparing your AI tool experience.</p>
+        </div>
+    </main>
+
+    <footer class="detail-footer">
+        © 2026 NEXORA. Discover Smarter. Automate Better.
+    </footer>
+
+</div>
+
+<script>
+const tools = {
+    chatgpt: {
+        name: "ChatGPT",
+        category: "AI ASSISTANT",
+        icon: "✳",
+        tagline: "Think bigger. Create smarter. Get more done.",
+        description: "ChatGPT is an AI assistant that helps you explore ideas, write content, analyze information, solve problems and work through everyday tasks.",
+        features: [
+            ["✍️","Writing & Creation","Draft articles, messages, stories and other content."],
+            ["🧠","Research & Reasoning","Explore questions, understand concepts and analyze information."],
+            ["⚡","Everyday Productivity","Get help planning, organizing and completing tasks."]
+        ],
+        uses: ["Content creation","Learning and research","Business productivity"],
+        website: "https://chatgpt.com/"
+    },
+    claude: {
+        name: "Claude",
+        category: "AI ASSISTANT",
+        icon: "✦",
+        tagline: "A thoughtful partner for complex work.",
+        description: "Claude is an AI assistant designed to help with writing, reasoning, coding, document analysis and complex problem-solving.",
+        features: [
+            ["✍️","Writing","Develop clear, thoughtful written content."],
+            ["📄","Document Analysis","Work with documents and long-form information."],
+            ["💻","Coding Support","Understand code and work through development tasks."]
+        ],
+        uses: ["Writing and editing","Document analysis","Software development"],
+        website: "https://claude.ai/"
+    },
+    gemini: {
+        name: "Gemini",
+        category: "AI ASSISTANT",
+        icon: "✧",
+        tagline: "Explore ideas across text, images and more.",
+        description: "Google Gemini is an AI assistant for exploring information, generating ideas and working across different types of content.",
+        features: [
+            ["🔎","Information Discovery","Explore questions and understand information."],
+            ["✍️","Content Assistance","Develop ideas and create written content."],
+            ["🖼️","Multimodal Work","Work with supported text, image and other inputs."]
+        ],
+        uses: ["Research","Creative projects","Everyday assistance"],
+        website: "https://gemini.google.com/"
+    },
+    midjourney: {
+        name: "Midjourney",
+        category: "AI IMAGE",
+        icon: "◈",
+        tagline: "Turn imagination into extraordinary visuals.",
+        description: "Midjourney is an AI image generation platform for creating distinctive artwork, concepts and visual compositions from prompts.",
+        features: [
+            ["🎨","Image Generation","Create original images from text prompts."],
+            ["✨","Visual Exploration","Explore different artistic directions and styles."],
+            ["🖼️","Creative Concepts","Develop visual ideas for projects and campaigns."]
+        ],
+        uses: ["Digital artwork","Concept design","Creative inspiration"],
+        website: "https://www.midjourney.com/"
+    },
+    firefly: {
+        name: "Adobe Firefly",
+        category: "AI IMAGE",
+        icon: "✺",
+        tagline: "Bring creative ideas to life.",
+        description: "Adobe Firefly provides generative AI tools for creating and editing images and other creative assets.",
+        features: [
+            ["🎨","Generative Creation","Create visuals with generative AI."],
+            ["🪄","Creative Editing","Explore AI-assisted image editing."],
+            ["🧩","Adobe Integration","Work within supported Adobe creative workflows."]
+        ],
+        uses: ["Graphic design","Image editing","Marketing assets"],
+        website: "https://firefly.adobe.com/"
+    },
+    leonardo: {
+        name: "Leonardo AI",
+        category: "AI IMAGE",
+        icon: "✧",
+        tagline: "Create visuals without limits.",
+        description: "Leonardo AI offers creative image generation and visual tools for artwork, design concepts and digital assets.",
+        features: [
+            ["🖼️","Image Creation","Generate images from creative prompts."],
+            ["🎮","Asset Design","Explore visuals for games and digital projects."],
+            ["✨","Style Exploration","Experiment with visual directions."]
+        ],
+        uses: ["Digital art","Game assets","Visual design"],
+        website: "https://leonardo.ai/"
+    },
+    runway: {
+        name: "Runway",
+        category: "AI VIDEO",
+        icon: "▶",
+        tagline: "Create a new way to tell visual stories.",
+        description: "Runway provides AI-powered video generation and creative tools for producing and editing visual content.",
+        features: [
+            ["🎬","Video Generation","Create video content with AI tools."],
+            ["🎞️","Creative Editing","Explore AI-assisted video workflows."],
+            ["💡","Visual Storytelling","Develop ideas into visual sequences."]
+        ],
+        uses: ["Filmmaking","Social video","Creative production"],
+        website: "https://runwayml.com/"
+    },
+    pika: {
+        name: "Pika",
+        category: "AI VIDEO",
+        icon: "▷",
+        tagline: "Make your ideas move.",
+        description: "Pika is a creative AI platform for generating video clips and bringing visual concepts to life.",
+        features: [
+            ["🎥","Video Creation","Generate video from supported inputs."],
+            ["✨","Creative Effects","Explore expressive visual transformations."],
+            ["🖼️","Image Animation","Bring still images into motion."]
+        ],
+        uses: ["Short videos","Social content","Creative experiments"],
+        website: "https://pika.art/"
+    },
+    synthesia: {
+        name: "Synthesia",
+        category: "AI VIDEO",
+        icon: "◉",
+        tagline: "Create professional videos with AI avatars.",
+        description: "Synthesia helps teams create presenter-style videos using AI avatars and supported voice and language features.",
+        features: [
+            ["🧑","AI Avatars","Create videos with digital presenters."],
+            ["🗣️","Voiceovers","Use supported AI voice capabilities."],
+            ["🌍","Video Communication","Create training and business content."]
+        ],
+        uses: ["Staff training","Business communication","Educational videos"],
+        website: "https://www.synthesia.io/"
+    },
+    copilot: {
+        name: "GitHub Copilot",
+        category: "AI CODING",
+        icon: "⌘",
+        tagline: "Build software with an AI coding partner.",
+        description: "GitHub Copilot helps developers write, understand and improve code through AI-powered assistance in supported development environments.",
+        features: [
+            ["💻","Code Suggestions","Get AI-powered coding suggestions."],
+            ["🧠","Development Help","Explore explanations and coding approaches."],
+            ["⚙️","IDE Integration","Work inside supported development tools."]
+        ],
+        uses: ["Software development","Code learning","Developer productivity"],
+        website: "https://github.com/features/copilot"
+    },
+    cursor: {
+        name: "Cursor",
+        category: "AI CODING",
+        icon: "⌘",
+        tagline: "An AI-first environment for building software.",
+        description: "Cursor is an AI-powered code editor designed to help developers understand codebases and build software more efficiently.",
+        features: [
+            ["💻","AI Code Editing","Work with AI-assisted code editing."],
+            ["🔎","Codebase Understanding","Explore and understand project code."],
+            ["⚡","Developer Workflow","Speed up supported development tasks."]
+        ],
+        uses: ["Application development","Code editing","Project exploration"],
+        website: "https://cursor.com/"
+    },
+    zapier: {
+        name: "Zapier",
+        category: "AUTOMATION",
+        icon: "⚡",
+        tagline: "Connect your apps. Automate your work.",
+        description: "Zapier connects supported apps and services so you can automate repetitive tasks and build connected workflows.",
+        features: [
+            ["🔗","App Connections","Connect services across workflows."],
+            ["⚡","Task Automation","Automate repetitive processes."],
+            ["🧩","Workflow Building","Create automations with supported integrations."]
+        ],
+        uses: ["Business workflows","Lead management","Task automation"],
+        website: "https://zapier.com/"
+    },
+    n8n: {
+        name: "n8n",
+        category: "AUTOMATION",
+        icon: "⛓",
+        tagline: "Build powerful workflows with flexibility.",
+        description: "n8n is a workflow automation platform for connecting services, building integrations and creating AI-powered workflows.",
+        features: [
+            ["🔗","Integrations","Connect supported apps and services."],
+            ["⚙️","Workflow Logic","Build multi-step automated workflows."],
+            ["🤖","AI Workflows","Create workflows using supported AI capabilities."]
+        ],
+        uses: ["Business automation","AI agents","Technical integrations"],
+        website: "https://n8n.io/"
+    },
+    make: {
+        name: "Make",
+        category: "AUTOMATION",
+        icon: "⚡",
+        tagline: "Visualize and automate connected workflows.",
+        description: "Make is a visual automation platform for connecting apps, designing workflows and automating processes.",
+        features: [
+            ["🧩","Visual Builder","Design workflows through a visual interface."],
+            ["🔗","App Integrations","Connect supported services."],
+            ["⚡","Process Automation","Automate multi-step tasks."]
+        ],
+        uses: ["Business processes","App integrations","No-code automation"],
+        website: "https://www.make.com/"
+    },
+    notion: {
+        name: "Notion AI",
+        category: "PRODUCTIVITY",
+        icon: "▣",
+        tagline: "Bring your knowledge and work together.",
+        description: "Notion AI adds AI capabilities to the Notion workspace for working with notes, documents, knowledge and team projects.",
+        features: [
+            ["📝","Writing Assistance","Develop and improve written content."],
+            ["🧠","Knowledge Work","Work with information in your workspace."],
+            ["📚","Workspace Productivity","Organize projects and documentation."]
+        ],
+        uses: ["Note taking","Team documentation","Knowledge management"],
+        website: "https://www.notion.com/product/ai"
+    },
+    perplexity: {
+        name: "Perplexity",
+        category: "PRODUCTIVITY",
+        icon: "⌕",
+        tagline: "Explore the web with AI-powered answers.",
+        description: "Perplexity is an AI-powered answer and research platform that helps users explore questions with linked sources.",
+        features: [
+            ["🔎","AI Search","Explore questions with AI-assisted search."],
+            ["📚","Source Discovery","Review linked sources and references."],
+            ["🧠","Research Assistance","Investigate topics and gather information."]
+        ],
+        uses: ["Research","Information discovery","Topic exploration"],
+        website: "https://www.perplexity.ai/"
+    },
+    gamma: {
+        name: "Gamma",
+        category: "PRODUCTIVITY",
+        icon: "◫",
+        tagline: "Turn ideas into beautiful presentations.",
+        description: "Gamma helps users create presentations, documents and visual content using AI-assisted creation tools.",
+        features: [
+            ["📊","Presentations","Create visual presentation content."],
+            ["📝","Documents","Develop structured documents."],
+            ["🎨","Visual Design","Explore polished layouts and themes."]
+        ],
+        uses: ["Presentations","Business proposals","Visual storytelling"],
+        website: "https://gamma.app/"
+    },
+    descript: {
+        name: "Descript",
+        category: "AI VIDEO",
+        icon: "🎙️",
+        tagline: "Edit audio and video through your words.",
+        description: "Descript is an audio and video editing platform with tools for transcript-based editing and AI-assisted media production.",
+        features: [
+            ["🎙️","Audio Editing","Edit and refine audio projects."],
+            ["🎬","Video Editing","Work with video through supported editing tools."],
+            ["📝","Transcript Editing","Edit media using transcript-based workflows."]
+        ],
+        uses: ["Podcasts","Video production","Content creation"],
+        website: "https://www.descript.com/"
+    }
+};
+
+const id = new URLSearchParams(window.location.search).get("tool");
+const tool = tools[id];
+const root = document.getElementById("detailRoot");
+
+if (!tool) {
+    root.innerHTML = `
+        <div class="not-found">
+            <h1>Tool not found.</h1>
+            <p>We couldn't find that AI tool in the NEXORA directory.</p>
+            <a href="index.html#tools" class="primary-button">Return to AI Discovery →</a>
+        </div>
+    `;
+} else {
+    document.title = tool.name + " — NEXORA";
+
+    root.innerHTML = `
+        <section class="detail-hero">
+            <div class="detail-copy">
+                <span class="detail-badge">${tool.category}</span>
+                <h1>Discover <span>${tool.name}</span></h1>
+                <p class="detail-tagline">${tool.tagline}</p>
+                <p class="detail-description">${tool.description}</p>
+                <div class="detail-actions">
+                    <a href="${tool.website}" target="_blank" rel="noopener noreferrer" class="primary-button">
+                        Visit Official Website ↗
+                    </a>
+                    <a href="index.html#tools" class="secondary-button">
+                        Explore More Tools
+                    </a>
+                </div>
+            </div>
+
+            <div class="detail-visual">
+                <div class="detail-orb"></div>
+                <div class="detail-icon">${tool.icon}</div>
+            </div>
+        </section>
+
+        <section class="detail-content">
+            <div class="detail-section-heading">
+                <small>EXPLORE THE CAPABILITIES</small>
+                <h2>What makes <span style="color:#a18aff">${tool.name}</span> powerful?</h2>
+            </div>
+
+            <div class="detail-grid">
+                ${tool.features.map(item => `
+                    <article class="detail-card">
+                        <div class="card-icon">${item[0]}</div>
+                        <h3>${item[1]}</h3>
+                        <p>${item[2]}</p>
+                    </article>
+                `).join("")}
+            </div>
+
+            <div class="detail-section-heading">
+                <small>BUILT FOR POSSIBILITIES</small>
+                <h2>What can you use it for?</h2>
+            </div>
+
+            <div class="detail-grid">
+                ${tool.uses.map((item, index) => `
+                    <article class="detail-card">
+                        <div class="card-icon">${["🚀","💡","🎯"][index]}</div>
+                        <h3>${item}</h3>
+                        <p>Explore how ${tool.name} can support this type of work and help move your ideas forward.</p>
+                    </article>
+                `).join("")}
+            </div>
+
+            <div class="detail-bottom">
+                <div>
+                    <h2>Ready to explore ${tool.name}?</h2>
+                    <p>Visit the official platform to discover its latest features and plans.</p>
+                </div>
+                <a href="${tool.website}" target="_blank" rel="noopener noreferrer" class="primary-button">
+                    Explore ${tool.name} ↗
+                </a>
+            </div>
+        </section>
+    `;
+}
+</script>
+
+</body>
+</html>
