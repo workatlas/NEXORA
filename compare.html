@@ -1,0 +1,758 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Compare AI tools side by side with NEXORA Smart Compare.">
+<title>Smart Compare — NEXORA</title>
+<link rel="stylesheet" href="css/style.css">
+
+<style>
+* { box-sizing:border-box; }
+
+body {
+    margin:0;
+    background:#080d19;
+    color:#fff;
+    font-family:inherit;
+}
+
+.compare-page {
+    min-height:100vh;
+    background:
+        radial-gradient(ellipse at 50% 10%,rgba(130,101,255,.17),transparent 45%),
+        #080d19;
+}
+
+.compare-nav {
+    min-height:80px;
+    padding:18px 9%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.compare-back {
+    color:#b7a6ff;
+    font-size:14px;
+    font-weight:700;
+    text-decoration:none;
+}
+
+.compare-hero {
+    text-align:center;
+    max-width:850px;
+    margin:auto;
+    padding:85px 25px 45px;
+}
+
+.compare-badge {
+    display:inline-block;
+    padding:8px 15px;
+    border:1px solid rgba(130,101,255,.4);
+    border-radius:30px;
+    color:#b7a6ff;
+    background:rgba(130,101,255,.1);
+    font-size:11px;
+    letter-spacing:2px;
+    margin-bottom:22px;
+}
+
+.compare-hero h1 {
+    font-size:clamp(38px,6vw,65px);
+    line-height:1.1;
+    letter-spacing:-2px;
+    margin:0 0 20px;
+}
+
+.compare-hero h1 span {
+    background:linear-gradient(100deg,#a18aff,#47caff);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+}
+
+.compare-hero p {
+    max-width:650px;
+    margin:auto;
+    color:#9ba9c1;
+    font-size:15px;
+    line-height:1.9;
+}
+
+.compare-container {
+    max-width:1100px;
+    margin:auto;
+    padding:20px 25px 100px;
+}
+
+.selector-panel {
+    padding:30px;
+    border:1px solid rgba(145,119,255,.22);
+    border-radius:20px;
+    background:linear-gradient(145deg,#131e34,#0e1729);
+    margin-bottom:35px;
+}
+
+.selector-heading {
+    text-align:center;
+    margin-bottom:25px;
+}
+
+.selector-heading h2 {
+    font-size:23px;
+    margin:0 0 8px;
+}
+
+.selector-heading p {
+    color:#9ba9c1;
+    font-size:13px;
+    margin:0;
+}
+
+.selector-grid {
+    display:grid;
+    grid-template-columns:1fr auto 1fr;
+    align-items:end;
+    gap:20px;
+}
+
+.selector-field label {
+    display:block;
+    color:#b7a6ff;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:1.5px;
+    margin-bottom:12px;
+}
+
+.selector-field select {
+    width:100%;
+    min-height:54px;
+    padding:0 15px;
+    border:1px solid rgba(255,255,255,.14);
+    border-radius:11px;
+    background:#0b1425;
+    color:#fff;
+    font-size:14px;
+    outline:none;
+    cursor:pointer;
+}
+
+.selector-field select:focus {
+    border-color:#947aff;
+    box-shadow:0 0 0 3px rgba(145,119,255,.12);
+}
+
+.versus {
+    width:45px;
+    height:45px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:50%;
+    background:rgba(130,101,255,.16);
+    border:1px solid rgba(145,119,255,.3);
+    color:#b7a6ff;
+    font-size:12px;
+    font-weight:800;
+    margin-bottom:4px;
+}
+
+.compare-results-heading {
+    text-align:center;
+    margin:50px 0 25px;
+}
+
+.compare-results-heading small {
+    color:#a18aff;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:3px;
+}
+
+.compare-results-heading h2 {
+    font-size:clamp(25px,4vw,35px);
+    margin:10px 0;
+}
+
+.compare-results-heading p {
+    color:#9ba9c1;
+    font-size:13px;
+    line-height:1.7;
+}
+
+.comparison-grid {
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+}
+
+.tool-profile {
+    padding:30px;
+    border:1px solid rgba(255,255,255,.1);
+    border-radius:19px;
+    background:linear-gradient(145deg,#131e34,#0e1729);
+    transition:border-color .3s,transform .3s;
+}
+
+.tool-profile:hover {
+    transform:translateY(-4px);
+    border-color:rgba(145,119,255,.45);
+}
+
+.profile-top {
+    display:flex;
+    align-items:center;
+    gap:17px;
+    margin-bottom:23px;
+}
+
+.profile-icon {
+    width:62px;
+    height:62px;
+    flex-shrink:0;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    border-radius:17px;
+    font-size:32px;
+    background:linear-gradient(135deg,#7655f5,#278fff);
+    box-shadow:0 10px 30px rgba(117,85,245,.2);
+}
+
+.profile-category {
+    color:#a18aff;
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:1.5px;
+    margin-bottom:7px;
+}
+
+.profile-top h3 {
+    font-size:22px;
+    margin:0;
+}
+
+.profile-tagline {
+    color:#dce5f7;
+    font-size:15px;
+    line-height:1.6;
+    margin-bottom:13px;
+}
+
+.profile-description {
+    color:#9ba9c1;
+    font-size:13px;
+    line-height:1.9;
+    min-height:74px;
+}
+
+.profile-divider {
+    height:1px;
+    background:rgba(255,255,255,.09);
+    margin:23px 0;
+}
+
+.profile-label {
+    color:#a18aff;
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:1.7px;
+    margin-bottom:14px;
+}
+
+.strength-list {
+    display:grid;
+    gap:12px;
+    padding:0;
+    margin:0;
+    list-style:none;
+}
+
+.strength-list li {
+    display:flex;
+    gap:11px;
+    align-items:flex-start;
+    color:#dce5f7;
+    font-size:13px;
+    line-height:1.6;
+}
+
+.strength-list li span {
+    color:#a18aff;
+    font-size:15px;
+}
+
+.profile-button {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:48px;
+    margin-top:25px;
+    padding:12px 15px;
+    border:1px solid rgba(145,119,255,.35);
+    border-radius:10px;
+    color:#fff;
+    background:rgba(130,101,255,.13);
+    text-decoration:none;
+    font-size:13px;
+    font-weight:700;
+    transition:background .25s,border-color .25s;
+}
+
+.profile-button:hover {
+    background:rgba(130,101,255,.27);
+    border-color:#a18aff;
+}
+
+.insight-panel {
+    margin-top:30px;
+    padding:30px;
+    border:1px solid rgba(145,119,255,.23);
+    border-radius:18px;
+    background:linear-gradient(120deg,#121c35,#11152e);
+}
+
+.insight-panel h3 {
+    font-size:20px;
+    margin:0 0 12px;
+}
+
+.insight-panel p {
+    color:#9ba9c1;
+    font-size:13px;
+    line-height:1.9;
+    margin:0;
+}
+
+.insight-note {
+    display:flex;
+    align-items:flex-start;
+    gap:12px;
+    margin-top:18px;
+    padding:15px;
+    border-radius:11px;
+    background:rgba(130,101,255,.09);
+    color:#c8c0f7;
+    font-size:12px;
+    line-height:1.8;
+}
+
+.empty-state {
+    padding:35px;
+    text-align:center;
+    color:#9ba9c1;
+}
+
+.compare-footer {
+    padding:35px 9%;
+    border-top:1px solid rgba(255,255,255,.08);
+    color:#8290aa;
+    font-size:12px;
+    text-align:center;
+}
+
+@media(max-width:700px) {
+    .compare-nav {
+        padding:18px 6%;
+    }
+
+    .compare-hero {
+        padding-top:65px;
+    }
+
+    .selector-grid {
+        grid-template-columns:1fr;
+        gap:17px;
+    }
+
+    .versus {
+        margin:auto;
+    }
+
+    .comparison-grid {
+        grid-template-columns:1fr;
+    }
+
+    .tool-profile {
+        padding:23px;
+    }
+
+    .profile-description {
+        min-height:0;
+    }
+}
+</style>
+</head>
+
+<body>
+<div class="compare-page">
+
+<header class="compare-nav">
+    <a href="index.html" class="logo">NEXORA<span>.</span></a>
+    <a href="index.html#tools" class="compare-back">← Back to Discovery</a>
+</header>
+
+<main>
+    <section class="compare-hero">
+        <span class="compare-badge">NEXORA INTELLIGENCE</span>
+        <h1>Compare. <span>Discover.</span> Decide.</h1>
+        <p>
+            Find the right AI platform for your next idea.
+            Compare tools side by side, explore their strengths
+            and discover what works best for your goals.
+        </p>
+    </section>
+
+    <section class="compare-container">
+
+        <div class="selector-panel">
+            <div class="selector-heading">
+                <h2>Choose Your AI Tools</h2>
+                <p>Select two platforms to start your comparison.</p>
+            </div>
+
+            <div class="selector-grid">
+                <div class="selector-field">
+                    <label for="toolOne">FIRST AI TOOL</label>
+                    <select id="toolOne"></select>
+                </div>
+
+                <div class="versus">VS</div>
+
+                <div class="selector-field">
+                    <label for="toolTwo">SECOND AI TOOL</label>
+                    <select id="toolTwo"></select>
+                </div>
+            </div>
+        </div>
+
+        <div class="compare-results-heading">
+            <small>YOUR COMPARISON</small>
+            <h2>Side-by-Side Overview</h2>
+            <p>Explore the differences and strengths of each platform.</p>
+        </div>
+
+        <div id="comparisonResults"></div>
+
+    </section>
+</main>
+
+<footer class="compare-footer">
+    © 2026 NEXORA. Discover Smarter. Automate Better.
+</footer>
+
+</div>
+
+<script>
+const tools = {
+chatgpt:{
+name:"ChatGPT",category:"AI ASSISTANT",icon:"✳",
+tagline:"Think bigger. Create smarter. Get more done.",
+description:"An AI assistant for exploring ideas, writing content, analyzing information and solving problems.",
+strengths:["Writing and content creation","Research and reasoning","Everyday productivity"],
+bestFor:"People who want a versatile AI assistant for everyday tasks, learning, creativity and work.",
+website:"https://chatgpt.com/"
+},
+claude:{
+name:"Claude",category:"AI ASSISTANT",icon:"✦",
+tagline:"A thoughtful partner for complex work.",
+description:"An AI assistant designed for writing, reasoning, coding, document analysis and complex problem-solving.",
+strengths:["Writing and editing","Document analysis","Software development"],
+bestFor:"People working with detailed writing, long documents, coding and complex tasks.",
+website:"https://claude.ai/"
+},
+gemini:{
+name:"Gemini",category:"AI ASSISTANT",icon:"✧",
+tagline:"Explore ideas across text, images and more.",
+description:"Google's AI assistant for exploring information, generating ideas and working across different types of content.",
+strengths:["Information discovery","Content assistance","Multimodal work"],
+bestFor:"People who want an AI assistant for research, creative projects and supported Google workflows.",
+website:"https://gemini.google.com/"
+},
+midjourney:{
+name:"Midjourney",category:"AI IMAGE",icon:"◈",
+tagline:"Turn imagination into extraordinary visuals.",
+description:"An AI image generation platform for distinctive artwork, concepts and visual compositions.",
+strengths:["Image generation","Visual exploration","Creative concepts"],
+bestFor:"Artists, designers and creators exploring distinctive visual styles and concepts.",
+website:"https://www.midjourney.com/"
+},
+firefly:{
+name:"Adobe Firefly",category:"AI IMAGE",icon:"✺",
+tagline:"Bring creative ideas to life.",
+description:"Adobe's generative AI tools for creating and editing images and other creative assets.",
+strengths:["Generative creation","Creative editing","Adobe integration"],
+bestFor:"Designers and creative teams using Adobe tools for visual content and editing.",
+website:"https://firefly.adobe.com/"
+},
+leonardo:{
+name:"Leonardo AI",category:"AI IMAGE",icon:"✧",
+tagline:"Create visuals without limits.",
+description:"A creative AI platform for image generation, artwork, design concepts and digital assets.",
+strengths:["Image creation","Digital asset design","Style exploration"],
+bestFor:"Digital artists, game creators and designers developing visual assets.",
+website:"https://leonardo.ai/"
+},
+runway:{
+name:"Runway",category:"AI VIDEO",icon:"▶",
+tagline:"Create a new way to tell visual stories.",
+description:"AI-powered video generation and creative tools for producing and editing visual content.",
+strengths:["Video generation","Creative editing","Visual storytelling"],
+bestFor:"Video creators and storytellers exploring AI-assisted visual production.",
+website:"https://runwayml.com/"
+},
+pika:{
+name:"Pika",category:"AI VIDEO",icon:"▷",
+tagline:"Make your ideas move.",
+description:"A creative AI platform for generating video clips and bringing visual concepts to life.",
+strengths:["Video creation","Creative effects","Image animation"],
+bestFor:"Creators making short videos, social content and creative experiments.",
+website:"https://pika.art/"
+},
+synthesia:{
+name:"Synthesia",category:"AI VIDEO",icon:"◉",
+tagline:"Create professional videos with AI avatars.",
+description:"A video creation platform using AI avatars and supported voice and language features.",
+strengths:["AI avatars","Voiceovers","Business video communication"],
+bestFor:"Businesses and educators creating presenter-style training and communication videos.",
+website:"https://www.synthesia.io/"
+},
+copilot:{
+name:"GitHub Copilot",category:"AI CODING",icon:"⌘",
+tagline:"Build software with an AI coding partner.",
+description:"AI-powered coding assistance for writing, understanding and improving code in supported development environments.",
+strengths:["Code suggestions","Development assistance","IDE integration"],
+bestFor:"Developers who want AI assistance integrated into supported coding environments.",
+website:"https://github.com/features/copilot"
+},
+cursor:{
+name:"Cursor",category:"AI CODING",icon:"⌘",
+tagline:"An AI-first environment for building software.",
+description:"An AI-powered code editor designed to help developers understand codebases and build software.",
+strengths:["AI code editing","Codebase understanding","Developer workflow"],
+bestFor:"Developers who want an AI-first editor for working across project codebases.",
+website:"https://cursor.com/"
+},
+zapier:{
+name:"Zapier",category:"AUTOMATION",icon:"⚡",
+tagline:"Connect your apps. Automate your work.",
+description:"An automation platform connecting supported apps and services to automate repetitive tasks.",
+strengths:["App connections","Task automation","Workflow building"],
+bestFor:"Teams and individuals connecting everyday business apps without building everything from scratch.",
+website:"https://zapier.com/"
+},
+n8n:{
+name:"n8n",category:"AUTOMATION",icon:"⛓",
+tagline:"Build powerful workflows with flexibility.",
+description:"A workflow automation platform for integrations, custom workflows and AI-powered processes.",
+strengths:["Service integrations","Workflow logic","AI workflows"],
+bestFor:"Technical users and teams building flexible, multi-step and AI-powered workflows.",
+website:"https://n8n.io/"
+},
+make:{
+name:"Make",category:"AUTOMATION",icon:"⚡",
+tagline:"Visualize and automate connected workflows.",
+description:"A visual automation platform for connecting apps, designing workflows and automating processes.",
+strengths:["Visual workflow builder","App integrations","Process automation"],
+bestFor:"People who prefer designing and managing automations through a visual workflow interface.",
+website:"https://www.make.com/"
+},
+notion:{
+name:"Notion AI",category:"PRODUCTIVITY",icon:"▣",
+tagline:"Bring your knowledge and work together.",
+description:"AI capabilities within the Notion workspace for notes, documents, knowledge and team projects.",
+strengths:["Writing assistance","Knowledge work","Workspace productivity"],
+bestFor:"Individuals and teams organizing knowledge, documentation and projects in Notion.",
+website:"https://www.notion.com/product/ai"
+},
+perplexity:{
+name:"Perplexity",category:"PRODUCTIVITY",icon:"⌕",
+tagline:"Explore the web with AI-powered answers.",
+description:"An AI-powered answer and research platform that helps users explore questions with linked sources.",
+strengths:["AI search","Source discovery","Research assistance"],
+bestFor:"People researching topics and exploring information with linked references.",
+website:"https://www.perplexity.ai/"
+},
+gamma:{
+name:"Gamma",category:"PRODUCTIVITY",icon:"◫",
+tagline:"Turn ideas into beautiful presentations.",
+description:"An AI-assisted platform for creating presentations, documents and visual content.",
+strengths:["Presentation creation","Document creation","Visual design"],
+bestFor:"People creating presentations, proposals and visually structured content.",
+website:"https://gamma.app/"
+},
+descript:{
+name:"Descript",category:"AI VIDEO",icon:"🎙️",
+tagline:"Edit audio and video through your words.",
+description:"An audio and video editing platform with transcript-based editing and AI-assisted media production.",
+strengths:["Audio editing","Video editing","Transcript-based editing"],
+bestFor:"Podcasters, video creators and teams producing spoken-word media.",
+website:"https://www.descript.com/"
+}
+};
+
+const firstSelect = document.getElementById("toolOne");
+const secondSelect = document.getElementById("toolTwo");
+const results = document.getElementById("comparisonResults");
+
+function populateSelect(select) {
+    Object.entries(tools).forEach(([key,tool]) => {
+        const option = document.createElement("option");
+        option.value = key;
+        option.textContent = tool.name + " — " + tool.category;
+        select.appendChild(option);
+    });
+}
+
+populateSelect(firstSelect);
+populateSelect(secondSelect);
+
+firstSelect.value = "chatgpt";
+secondSelect.value = "claude";
+
+function createProfile(tool) {
+    const profile = document.createElement("article");
+    profile.className = "tool-profile";
+
+    const top = document.createElement("div");
+    top.className = "profile-top";
+
+    const icon = document.createElement("div");
+    icon.className = "profile-icon";
+    icon.textContent = tool.icon;
+
+    const titleWrap = document.createElement("div");
+
+    const category = document.createElement("div");
+    category.className = "profile-category";
+    category.textContent = tool.category;
+
+    const title = document.createElement("h3");
+    title.textContent = tool.name;
+
+    titleWrap.append(category,title);
+    top.append(icon,titleWrap);
+
+    const tagline = document.createElement("div");
+    tagline.className = "profile-tagline";
+    tagline.textContent = tool.tagline;
+
+    const description = document.createElement("p");
+    description.className = "profile-description";
+    description.textContent = tool.description;
+
+    const divider = document.createElement("div");
+    divider.className = "profile-divider";
+
+    const label = document.createElement("div");
+    label.className = "profile-label";
+    label.textContent = "KEY STRENGTHS";
+
+    const list = document.createElement("ul");
+    list.className = "strength-list";
+
+    tool.strengths.forEach(strength => {
+        const item = document.createElement("li");
+        const marker = document.createElement("span");
+        marker.textContent = "✦";
+        const text = document.createElement("span");
+        text.textContent = strength;
+        item.append(marker,text);
+        list.appendChild(item);
+    });
+
+    const bestDivider = document.createElement("div");
+    bestDivider.className = "profile-divider";
+
+    const bestLabel = document.createElement("div");
+    bestLabel.className = "profile-label";
+    bestLabel.textContent = "BEST SUITED FOR";
+
+    const bestText = document.createElement("p");
+    bestText.className = "profile-description";
+    bestText.textContent = tool.bestFor;
+
+    const link = document.createElement("a");
+    link.className = "profile-button";
+    link.href = tool.website;
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+    link.textContent = "Visit Official Website ↗";
+
+    profile.append(
+        top,tagline,description,divider,label,list,
+        bestDivider,bestLabel,bestText,link
+    );
+
+    return profile;
+}
+
+function renderComparison() {
+    const firstKey = firstSelect.value;
+    const secondKey = secondSelect.value;
+
+    const firstTool = tools[firstKey];
+    const secondTool = tools[secondKey];
+
+    results.replaceChildren();
+
+    if (firstKey === secondKey) {
+        const message = document.createElement("div");
+        message.className = "insight-panel";
+        message.innerHTML = "<h3>Choose two different tools</h3><p>Select another AI platform to create your comparison.</p>";
+        results.appendChild(message);
+        return;
+    }
+
+    const grid = document.createElement("div");
+    grid.className = "comparison-grid";
+
+    grid.append(
+        createProfile(firstTool),
+        createProfile(secondTool)
+    );
+
+    const insight = document.createElement("div");
+    insight.className = "insight-panel";
+
+    const heading = document.createElement("h3");
+    heading.textContent = "Your NEXORA Comparison Insight";
+
+    const paragraph = document.createElement("p");
+
+    if (firstTool.category === secondTool.category) {
+        paragraph.textContent =
+            firstTool.name + " and " + secondTool.name +
+            " belong to the same category: " + firstTool.category +
+            ". Compare their strengths and choose the workflow that best matches your goals.";
+    } else {
+        paragraph.textContent =
+            firstTool.name + " and " + secondTool.name +
+            " serve different categories. " + firstTool.name +
+            " belongs to " + firstTool.category + ", while " +
+            secondTool.name + " belongs to " + secondTool.category +
+            ". They may complement each other in a broader workflow.";
+    }
+
+    const note = document.createElement("div");
+    note.className = "insight-note";
+    note.textContent =
+        "✦ NEXORA Tip: The best choice depends on your goals, preferred workflow, budget and the features you need. Check each official website for current plans and capabilities.";
+
+    insight.append(heading,paragraph,note);
+
+    results.append(grid,insight);
+}
+
+firstSelect.addEventListener("change",renderComparison);
+secondSelect.addEventListener("change",renderComparison);
+
+renderComparison();
+</script>
+
+</body>
+</html>
