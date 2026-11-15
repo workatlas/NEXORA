@@ -252,3 +252,69 @@
 
 </body>
 </html>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const searchInput = document.getElementById("toolSearch");
+    const searchButton = document.getElementById("searchButton");
+    const searchMessage = document.getElementById("searchMessage");
+    const toolCards = document.querySelectorAll(".tool-card");
+
+    const keywords = {
+        "chatgpt": ["chat", "writing", "research", "assistant", "productivity", "business", "ideas"],
+        "claude": ["writing", "coding", "analysis", "assistant", "research"],
+        "midjourney": ["image", "art", "design", "picture", "visual", "creative"]
+    };
+
+    function searchTools() {
+        const query = searchInput.value.trim().toLowerCase();
+
+        let matches = 0;
+
+        toolCards.forEach(card => {
+            const content = card.textContent.toLowerCase();
+
+            const toolName = card.querySelector("h3").textContent
+                .trim().toLowerCase();
+
+            const relatedWords = keywords[toolName] || [];
+
+            const found =
+                query === "" ||
+                content.includes(query) ||
+                relatedWords.some(word => query.includes(word));
+
+            card.style.display = found ? "flex" : "none";
+
+            if (found) matches++;
+        });
+
+        if (query === "") {
+            searchMessage.textContent = "";
+        } else if (matches > 0) {
+            searchMessage.textContent =
+                matches + " matching AI tool(s) found.";
+        } else {
+            searchMessage.textContent =
+                "No matching tools yet. Try writing, coding, research or image creation.";
+        }
+
+        document.getElementById("tools").scrollIntoView({
+            behavior: "smooth"
+        });
+    }
+
+    searchButton.addEventListener("click", searchTools);
+
+    searchInput.addEventListener("keydown", function(event) {
+        if (event.key === "Enter") {
+            searchTools();
+        }
+    });
+
+});
+</script>
+</body>
+
+
