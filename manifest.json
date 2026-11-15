@@ -1,0 +1,32 @@
+
+{
+  "id": "./",
+  "name": "NEXORA — AI Discovery Platform",
+  "short_name": "NEXORA",
+  "description": "Discover, compare and explore powerful AI tools.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#070b16",
+  "theme_color": "#070b16",
+  "categories": [
+    "productivity",
+    "utilities",
+    "technology"
+  ],
+  "icons": [
+    {
+      "src": "assets/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
