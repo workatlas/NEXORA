@@ -5,9 +5,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Discover the world's best AI tools, intelligent software and automation solutions with NEXORA.">
+    <meta name="description" content="Discover powerful AI tools, intelligent software and automation solutions with NEXORA.">
     <title>NEXORA — Discover the Future of AI</title>
     <link rel="stylesheet" href="css/style.css">
+
+    <!-- CATEGORY FILTER STYLES -->
+    <style>
+        .category-card {
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .category-card.is-active {
+            border-color: #8265ff;
+            box-shadow: 0 0 25px rgba(130, 101, 255, 0.22);
+            transform: translateY(-3px);
+        }
+
+        .filter-toolbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin: 25px 0;
+        }
+
+        .filter-status {
+            color: #a99aff;
+            font-size: 13px;
+        }
+
+        .filter-reset {
+            padding: 10px 18px;
+            color: white;
+            background: rgba(130, 101, 255, 0.15);
+            border: 1px solid rgba(130, 101, 255, 0.4);
+            border-radius: 9px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.3s ease;
+        }
+
+        .filter-reset:hover {
+            background: rgba(130, 101, 255, 0.3);
+            border-color: #8265ff;
+        }
+
+        .tool-card[hidden] {
+            display: none !important;
+        }
+    </style>
 </head>
 
 <body>
@@ -49,7 +97,7 @@
                     your ideas forward.
                 </p>
 
-                <!-- SMART DISCOVERY SEARCH -->
+                <!-- SMART SEARCH -->
                 <div class="search-container">
 
                     <div class="search-box">
@@ -117,42 +165,42 @@
             <div class="section-heading">
                 <span class="eyebrow">EXPLORE THE ECOSYSTEM</span>
                 <h2>One universe. <span>Infinite possibilities.</span></h2>
-                <p>Find the right AI technology for whatever you want to create.</p>
+                <p>Choose a category to discover the right AI technology.</p>
             </div>
 
             <div class="category-grid">
 
-                <a href="#tools" class="category-card">
+                <a href="#tools" class="category-card" data-category-filter="writing">
                     <span class="category-icon">✍️</span>
                     <h3>AI Writing</h3>
                     <p>Create, write and communicate.</p>
                 </a>
 
-                <a href="#tools" class="category-card">
+                <a href="#tools" class="category-card" data-category-filter="image">
                     <span class="category-icon">🎨</span>
                     <h3>AI Image</h3>
                     <p>Transform imagination into visuals.</p>
                 </a>
 
-                <a href="#tools" class="category-card">
+                <a href="#tools" class="category-card" data-category-filter="video">
                     <span class="category-icon">🎬</span>
                     <h3>AI Video</h3>
                     <p>Bring stories and ideas to life.</p>
                 </a>
 
-                <a href="#tools" class="category-card">
+                <a href="#tools" class="category-card" data-category-filter="coding">
                     <span class="category-icon">💻</span>
                     <h3>AI Coding</h3>
                     <p>Build and develop faster.</p>
                 </a>
 
-                <a href="#tools" class="category-card">
+                <a href="#tools" class="category-card" data-category-filter="automation">
                     <span class="category-icon">⚡</span>
                     <h3>Automation</h3>
                     <p>Make workflows work smarter.</p>
                 </a>
 
-                <a href="#tools" class="category-card">
+                <a href="#tools" class="category-card" data-category-filter="productivity">
                     <span class="category-icon">🧠</span>
                     <h3>Productivity</h3>
                     <p>Think better and achieve more.</p>
@@ -166,15 +214,24 @@
         <section class="tools-section section" id="tools">
 
             <div class="section-heading">
-
                 <span class="eyebrow">THE AI COLLECTION</span>
-
                 <h2>Tools that move <span>you forward.</span></h2>
-
                 <p>
                     Discover powerful AI platforms selected to help
                     you create, build, automate and achieve more.
                 </p>
+            </div>
+
+            <!-- FILTER CONTROLS -->
+            <div class="filter-toolbar">
+
+                <span class="filter-status" id="filterStatus">
+                    Showing all 16 AI tools
+                </span>
+
+                <button class="filter-reset" id="showAllButton">
+                    Show All Tools ↗
+                </button>
 
             </div>
 
@@ -183,6 +240,7 @@
                 <!-- AI ASSISTANTS -->
 
                 <article class="tool-card"
+                    data-category="writing productivity"
                     data-keywords="chatgpt chat writing research assistant productivity business ideas content generation">
 
                     <div class="tool-top">
@@ -204,6 +262,7 @@
                 </article>
 
                 <article class="tool-card"
+                    data-category="writing coding productivity"
                     data-keywords="claude writing research coding analysis assistant documents productivity">
 
                     <div class="tool-top">
@@ -225,6 +284,7 @@
                 </article>
 
                 <article class="tool-card"
+                    data-category="writing image productivity"
                     data-keywords="gemini google writing research assistant images multimodal productivity">
 
                     <div class="tool-top">
@@ -248,7 +308,8 @@
                 <!-- AI IMAGE -->
 
                 <article class="tool-card"
-                    data-keywords="midjourney image art design picture visual creative illustration ai image generator">
+                    data-category="image"
+                    data-keywords="midjourney image art design picture visual creative illustration generator">
 
                     <div class="tool-top">
                         <span class="tool-icon">◈</span>
@@ -269,6 +330,7 @@
                 </article>
 
                 <article class="tool-card"
+                    data-category="image"
                     data-keywords="adobe firefly image generation photo editing design creative graphics">
 
                     <div class="tool-top">
@@ -290,6 +352,7 @@
                 </article>
 
                 <article class="tool-card"
+                    data-category="image"
                     data-keywords="leonardo ai image generator art design game assets creative visuals">
 
                     <div class="tool-top">
@@ -313,7 +376,8 @@
                 <!-- AI VIDEO -->
 
                 <article class="tool-card"
-                    data-keywords="runway video generator text to video image to video filmmaking editing ai video">
+                    data-category="video"
+                    data-keywords="runway video generator text to video image to video filmmaking editing">
 
                     <div class="tool-top">
                         <span class="tool-icon">▶</span>
@@ -334,6 +398,7 @@
                 </article>
 
                 <article class="tool-card"
+                    data-category="video"
                     data-keywords="pika video generator animation image to video text to video creative effects">
 
                     <div class="tool-top">
@@ -355,6 +420,7 @@
                 </article>
 
                 <article class="tool-card"
+                    data-category="video productivity"
                     data-keywords="synthesia video avatar presenter training business corporate video text to video">
 
                     <div class="tool-top">
@@ -378,6 +444,7 @@
                 <!-- AI CODING -->
 
                 <article class="tool-card"
+                    data-category="coding productivity"
                     data-keywords="github copilot coding programming developer code assistant software development">
 
                     <div class="tool-top">
@@ -399,6 +466,7 @@
                 </article>
 
                 <article class="tool-card"
+                    data-category="coding"
                     data-keywords="cursor ai coding programming code editor developer software engineering">
 
                     <div class="tool-top">
@@ -422,6 +490,7 @@
                 <!-- AUTOMATION -->
 
                 <article class="tool-card"
+                    data-category="automation productivity"
                     data-keywords="zapier automation business workflow integrations apps productivity no code">
 
                     <div class="tool-top">
@@ -443,6 +512,7 @@
                 </article>
 
                 <article class="tool-card"
+                    data-category="automation coding"
                     data-keywords="n8n automation workflow ai agents integrations business developer no code">
 
                     <div class="tool-top">
@@ -466,6 +536,7 @@
                 <!-- PRODUCTIVITY -->
 
                 <article class="tool-card"
+                    data-category="productivity writing"
                     data-keywords="notion ai productivity notes documents writing workspace organization knowledge management">
 
                     <div class="tool-top">
@@ -487,6 +558,7 @@
                 </article>
 
                 <article class="tool-card"
+                    data-category="productivity writing"
                     data-keywords="perplexity research search answers sources information productivity web search">
 
                     <div class="tool-top">
@@ -508,6 +580,7 @@
                 </article>
 
                 <article class="tool-card"
+                    data-category="productivity image"
                     data-keywords="gamma presentations slides documents websites productivity design presentation generator">
 
                     <div class="tool-top">
@@ -579,7 +652,7 @@
 
     </footer>
 
-    <!-- SMART SEARCH ENGINE -->
+    <!-- SEARCH AND CATEGORY FILTER ENGINE -->
     <script>
 
     document.addEventListener("DOMContentLoaded", function () {
@@ -587,9 +660,15 @@
         const searchInput = document.getElementById("toolSearch");
         const searchButton = document.getElementById("searchButton");
         const searchMessage = document.getElementById("searchMessage");
-        const toolCards = document.querySelectorAll(".tool-card");
+        const filterStatus = document.getElementById("filterStatus");
+        const showAllButton = document.getElementById("showAllButton");
 
-        function searchTools() {
+        const toolCards = document.querySelectorAll(".tool-card");
+        const categoryCards = document.querySelectorAll("[data-category-filter]");
+
+        let activeCategory = "all";
+
+        function filterTools(shouldScroll = true) {
 
             const query = searchInput.value.trim().toLowerCase();
 
@@ -600,27 +679,30 @@
             toolCards.forEach(card => {
 
                 const content = card.textContent.toLowerCase();
-
-                const keywords = (
-                    card.dataset.keywords || ""
-                ).toLowerCase();
-
+                const keywords = (card.dataset.keywords || "").toLowerCase();
                 const searchableText = content + " " + keywords;
 
-                const found = searchWords.length === 0 ||
-                    searchWords.every(word =>
-                        searchableText.includes(word)
-                    );
+                const categories = (card.dataset.category || "").split(/\s+/);
 
-                card.style.display = found ? "flex" : "none";
+                const matchesCategory =
+                    activeCategory === "all" ||
+                    categories.includes(activeCategory);
 
-                if (found) {
+                const matchesSearch =
+                    searchWords.length === 0 ||
+                    searchWords.every(word => searchableText.includes(word));
+
+                const isVisible = matchesCategory && matchesSearch;
+
+                card.hidden = !isVisible;
+
+                if (isVisible) {
                     matches++;
                 }
 
             });
 
-            if (query === "") {
+            if (query === "" && activeCategory === "all") {
 
                 searchMessage.textContent = "";
 
@@ -632,25 +714,87 @@
             } else {
 
                 searchMessage.textContent =
-                    "No matching tools yet. Try writing, image, video, coding or automation.";
+                    "No matching tools found. Try another search or category.";
 
             }
 
-            document.getElementById("tools").scrollIntoView({
-                behavior: "smooth"
-            });
+            if (activeCategory === "all") {
+
+                filterStatus.textContent =
+                    "Showing " + matches + " AI tools";
+
+            } else {
+
+                const categoryName = activeCategory.charAt(0).toUpperCase() +
+                    activeCategory.slice(1);
+
+                filterStatus.textContent =
+                    categoryName + " · " + matches + " tool(s)";
+
+            }
+
+            if (shouldScroll) {
+
+                document.getElementById("tools").scrollIntoView({
+                    behavior: "smooth"
+                });
+
+            }
 
         }
 
-        searchButton.addEventListener("click", searchTools);
+        // CATEGORY CLICK
+        categoryCards.forEach(categoryCard => {
 
+            categoryCard.addEventListener("click", function(event) {
+
+                event.preventDefault();
+
+                activeCategory = this.dataset.categoryFilter;
+
+                categoryCards.forEach(card => {
+                    card.classList.remove("is-active");
+                });
+
+                this.classList.add("is-active");
+
+                filterTools(true);
+
+            });
+
+        });
+
+        // SEARCH BUTTON
+        searchButton.addEventListener("click", function() {
+            filterTools(true);
+        });
+
+        // ENTER KEY
         searchInput.addEventListener("keydown", function(event) {
 
             if (event.key === "Enter") {
-                searchTools();
+                filterTools(true);
             }
 
         });
+
+        // SHOW ALL TOOLS
+        showAllButton.addEventListener("click", function() {
+
+            activeCategory = "all";
+
+            searchInput.value = "";
+
+            categoryCards.forEach(card => {
+                card.classList.remove("is-active");
+            });
+
+            filterTools(false);
+
+        });
+
+        // INITIAL STATE
+        filterTools(false);
 
     });
 
