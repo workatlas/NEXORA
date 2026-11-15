@@ -1,10 +1,10 @@
 
 /* =====================================
    NEXORA — SERVICE WORKER
-   Offline Engine v1.0
+   Offline Engine v2.0
 ===================================== */
 
-const CACHE_NAME = "nexora-cache-v1";
+const CACHE_NAME = "nexora-cache-v2";
 
 const APP_FILES = [
   "./",
@@ -13,14 +13,14 @@ const APP_FILES = [
   "./compare.html",
   "./offline.html",
   "./manifest.json",
+  "./pwa.js",
   "./css/style.css",
-  "./assets/icons/icon-192.png",
-  "./assets/icons/icon-512.png",
-  "./assets/icons/icon.svg"
+  "./icon-192.png",
+  "./icon-512.png",
+  "./icon.svg"
 ];
 
 /* INSTALL */
-
 self.addEventListener("install", (event) => {
   event.waitUntil(
     (async () => {
@@ -31,7 +31,7 @@ self.addEventListener("install", (event) => {
           try {
             await cache.add(file);
           } catch (error) {
-            // Skip files that do not exist yet.
+            // Skip unavailable files without blocking installation.
           }
         })
       );
@@ -42,7 +42,6 @@ self.addEventListener("install", (event) => {
 });
 
 /* ACTIVATE */
-
 self.addEventListener("activate", (event) => {
   event.waitUntil(
     (async () => {
@@ -63,7 +62,6 @@ self.addEventListener("activate", (event) => {
 });
 
 /* FETCH */
-
 self.addEventListener("fetch", (event) => {
   const request = event.request;
 
@@ -74,7 +72,7 @@ self.addEventListener("fetch", (event) => {
   // Only handle requests from this NEXORA website.
   if (url.origin !== self.location.origin) return;
 
-  // HTML pages: try the network first.
+  // HTML pages: network first, cache fallback.
   if (request.mode === "navigate") {
     event.respondWith(
       (async () => {
@@ -83,25 +81,29 @@ self.addEventListener("fetch", (event) => {
 
           if (response && response.ok) {
             const cache = await caches.open(CACHE_NAME);
-            cache.put(request, response.clone());
+            await cache.put(request, response.clone());
           }
 
           return response;
         } catch (error) {
           const cache = await caches.open(CACHE_NAME);
 
-          const cachedPage = await cache.match(request, {
-            ignoreSearch: true
-          });
+          // First try the exact page and query.
+          let cachedPage = await cache.match(request);
+
+          // Then try the same page without its query string.
+          if (!cachedPage) {
+            cachedPage = await cache.match(
+              url.origin + url.pathname
+            );
+          }
 
           if (cachedPage) return cachedPage;
 
           const offlinePage = await cache.match("./offline.html");
-
           if (offlinePage) return offlinePage;
 
           const homePage = await cache.match("./index.html");
-
           if (homePage) return homePage;
 
           return new Response(
@@ -120,7 +122,7 @@ self.addEventListener("fetch", (event) => {
     return;
   }
 
-  // Other local files: use cache first.
+  // Other local files: cache first.
   event.respondWith(
     (async () => {
       const cache = await caches.open(CACHE_NAME);
@@ -132,7 +134,7 @@ self.addEventListener("fetch", (event) => {
         const response = await fetch(request);
 
         if (response && response.ok) {
-          cache.put(request, response.clone());
+          await cache.put(request, response.clone());
         }
 
         return response;
