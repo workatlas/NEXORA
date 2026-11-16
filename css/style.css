@@ -946,3 +946,25 @@ section,
         padding: 22px;
     }
 }
+
+/* =========================================
+   NEXORA — MOBILE AI CARD SNAP BROWSING
+   Gentle snapping between individual tools.
+   Preserves normal page scrolling.
+========================================= */
+
+@media (max-width: 650px) {
+
+    html {
+        scroll-snap-type: y proximity;
+        scroll-padding-top: 18px;
+    }
+
+    .tools-grid .tool-card {
+        scroll-snap-align: start;
+        scroll-snap-stop: always;
+        scroll-margin-top: 18px;
+    }
+
+}
+
