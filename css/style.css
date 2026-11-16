@@ -746,3 +746,203 @@ button {
     }
 }
 
+
+/* =========================================
+   NEXORA — MOBILE REFINEMENT
+   Keeps desktop styling intact.
+========================================= */
+
+/* Keep anchor navigation from landing too close to the viewport edge. */
+html {
+    scroll-padding-top: 18px;
+}
+
+#home,
+#categories,
+#tools,
+#intelligence {
+    scroll-margin-top: 18px;
+}
+
+/* Prevent grid and flex children from forcing horizontal overflow. */
+main,
+section,
+.section-heading,
+.category-grid,
+.tools-grid,
+.category-card,
+.tool-card,
+.intelligence-section {
+    min-width: 0;
+}
+
+@media (max-width: 650px) {
+    html,
+    body {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: clip;
+    }
+
+    /* Keep mobile navigation on one clean, horizontally scrollable row. */
+    .navbar {
+        width: 100%;
+        padding: 16px 5% 12px;
+        gap: 12px;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .nav-links {
+        width: 100%;
+        max-width: 100%;
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        gap: 22px;
+        overflow-x: auto;
+        overflow-y: hidden;
+        white-space: nowrap;
+        padding: 2px 2px 8px;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+    }
+
+    .nav-links::-webkit-scrollbar {
+        display: none;
+    }
+
+    .nav-links a {
+        flex: 0 0 auto;
+        font-size: 13px;
+    }
+
+    .nav-button {
+        display: none;
+    }
+
+    /* Make every section use the available phone width consistently. */
+    .section {
+        width: 100%;
+        padding: 58px 6%;
+    }
+
+    .section-heading {
+        width: 100%;
+        overflow-wrap: anywhere;
+    }
+
+    .section-heading h2 {
+        font-size: clamp(28px, 8vw, 36px);
+        line-height: 1.18;
+        letter-spacing: -0.8px;
+    }
+
+    .section-heading p {
+        font-size: 14px;
+        line-height: 1.7;
+    }
+
+    /* Full-card browsing: one complete card per row, natural page scrolling. */
+    .category-grid,
+    .tools-grid {
+        width: 100%;
+        grid-template-columns: minmax(0, 1fr);
+        gap: 16px;
+    }
+
+    .category-card,
+    .tool-card {
+        width: 100%;
+        min-width: 0;
+        max-width: 100%;
+        overflow-wrap: anywhere;
+    }
+
+    .tool-card {
+        min-height: 255px;
+        padding: 25px;
+    }
+
+    .tool-card p {
+        overflow-wrap: anywhere;
+    }
+
+    /* Leave comfortable scroll room after the last directory card. */
+    .tools-section {
+        padding-bottom: calc(88px + env(safe-area-inset-bottom, 0px));
+    }
+
+    .categories {
+        padding-bottom: calc(70px + env(safe-area-inset-bottom, 0px));
+    }
+
+    .filter-toolbar {
+        width: 100%;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .filter-status {
+        min-width: 0;
+        overflow-wrap: anywhere;
+    }
+
+    .filter-reset {
+        flex: 0 0 auto;
+        padding: 11px 14px;
+    }
+
+    .intelligence-section {
+        width: auto;
+        max-width: 100%;
+        margin: 10px 5% 65px;
+        padding: 34px 22px;
+    }
+
+    .intelligence-content {
+        min-width: 0;
+        width: 100%;
+    }
+
+    .intelligence-content h2 {
+        font-size: clamp(29px, 8vw, 38px);
+        overflow-wrap: anywhere;
+    }
+
+    .footer {
+        padding: 38px 6% calc(38px + env(safe-area-inset-bottom, 0px));
+    }
+}
+
+/* Extra-small phones. */
+@media (max-width: 380px) {
+    .hero {
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+
+    .hero h1 {
+        font-size: clamp(36px, 11vw, 44px);
+        letter-spacing: -1.6px;
+    }
+
+    .search-box {
+        gap: 6px;
+        padding: 8px 8px 8px 10px;
+    }
+
+    .search-box input {
+        font-size: 11px;
+    }
+
+    .search-box button {
+        padding: 11px 10px;
+        font-size: 11px;
+    }
+
+    .tool-card,
+    .category-card {
+        padding: 22px;
+    }
+}
